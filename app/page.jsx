@@ -49,10 +49,10 @@ export default function Home() {
   return (
     <main>
       <section className="h-[calc(100vh-3.5rem)] bg-[#1f2937] flex justify-center items-center text-white">
-        <section className="container flex w-full h-full gap-8 mx-4 my-6">
-          <div className="w-[70%] overflow-y-scroll no-scrollbar">
+        <section className="container flex flex-col w-full h-full gap-8 mx-4 my-6 sm:flex-row">
+          <div className="sm:w-[70%] w-full overflow-y-scroll no-scrollbar">
             <h3 className="my-4 text-xl font-medium">Add Client Data</h3>
-            <form className="grid grid-cols-2 gap-6 my-6">
+            <form className="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2">
               <div>
                 <label
                   htmlFor="name"
@@ -697,7 +697,7 @@ export default function Home() {
               </div>
             </form>
           </div>
-          <div className="max-w-[30%] overflow-y-scroll no-scrollbar">
+          <div className="sm:max-w-[30%] w-full overflow-y-scroll no-scrollbar">
             <div className="flex flex-col justify-center w-full gap-4 my-4">
               <h4 className="my-6 text-lg font-medium">Preview</h4>
               <div className="flex w-full gap-4">
