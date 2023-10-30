@@ -20,7 +20,7 @@ export default function Home() {
     employerName: "",
     employerAddress: "",
     annualIncome: "",
-    smookingStatus: "",
+    smokingStatus: "",
     drinkingStatus: "",
     familyDoctor: "",
     clinicAddress: "",
@@ -345,20 +345,20 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="smookingStatus"
+                  htmlFor="smokingStatus"
                   className="block mb-2 text-sm font-medium"
                 >
-                  Smooking Status
+                  Smoking Status
                 </label>
                 <select
-                  id="smookingStatus"
-                  name="smookingStatus"
+                  id="smokingStatus"
+                  name="smokingStatus"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  value={data.smookingStatus}
+                  value={data.smokingStatus}
                 >
-                  <option value="smooker">Smooker</option>
-                  <option value="non-smooking">Non-Smooker</option>
+                  <option value="smoker">smoker</option>
+                  <option value="non-smoking">Non-smoker</option>
                 </select>
               </div>
               <div>
@@ -660,12 +660,13 @@ export default function Home() {
                   Signature
                 </label>
                 <input
-                  type="file"
+                  type="text"
                   id="signature"
                   name="signature"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.signature}
+                  placeholder="AA"
                 />
               </div>
               <div></div>
@@ -757,8 +758,8 @@ export default function Home() {
                 <p>{data.annualIncome}</p>
               </div>
               <div className="flex w-full gap-4">
-                <p>Smooking Status : </p>
-                <p>{data.smookingStatus}</p>
+                <p>smoking Status : </p>
+                <p>{data.smokingStatus}</p>
               </div>
               <div className="flex w-full gap-4">
                 <p>Drinking Status : </p>
