@@ -8,20 +8,20 @@ export default function Home() {
     email: "",
     phone: "",
     address: "",
-    statusInCanada: "",
+    statusInCanada: "Citizen",
     arrivalDate: "",
     height: "",
     weight: "",
     yearsInCanada: "",
     birthCountry: "",
-    maritalStatus: "",
-    workStatus: "",
+    maritalStatus: "Single",
+    workStatus: "Employed",
     occupation: "",
     employerName: "",
     employerAddress: "",
     annualIncome: "",
-    smokingStatus: "",
-    drinkingStatus: "",
+    smokingStatus: "Non-Smoker",
+    drinkingStatus: "Non-Drinker",
     familyDoctor: "",
     clinicAddress: "",
     doctorLastVisit: "",
@@ -145,13 +145,15 @@ export default function Home() {
                   onChange={handleChange}
                   value={data.statusInCanada}
                 >
-                  <option value="citizen">Citizen</option>
-                  <option value="permanentResident">Permanent Resident</option>
-                  <option value="visitor">Visitor</option>
-                  <option value="student">Student</option>
-                  <option value="workPermit">Work Permit</option>
-                  <option value="refugee">Refugee</option>
-                  <option value="other">Other</option>
+                  <option defaultValue={true} value="Citizen">
+                    Citizen
+                  </option>
+                  <option value="PermanentResident">Permanent Resident</option>
+                  <option value="Visitor">Visitor</option>
+                  <option value="Student">Student</option>
+                  <option value="Work Permit">Work Permit</option>
+                  <option value="Refugee">Refugee</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               <div>
@@ -252,9 +254,11 @@ export default function Home() {
                   onChange={handleChange}
                   value={data.maritalStatus}
                 >
-                  <option value="single">Single</option>
-                  <option value="married">Married</option>
-                  <option value="divorced">Divorced</option>
+                  <option defaultValue={true} value="Single">
+                    Single
+                  </option>
+                  <option value="Married">Married</option>
+                  <option value="Divorced">Divorced</option>
                 </select>
               </div>
               <div>
@@ -271,8 +275,10 @@ export default function Home() {
                   onChange={handleChange}
                   value={data.workStatus}
                 >
-                  <option value="employed">Employed</option>
-                  <option value="unemployed">Unemployed</option>
+                  <option defaultValue={true} value="Employed">
+                    Employed
+                  </option>
+                  <option value="Unemployed">Unemployed</option>
                 </select>
               </div>
               <div>
@@ -357,8 +363,10 @@ export default function Home() {
                   onChange={handleChange}
                   value={data.smokingStatus}
                 >
-                  <option value="smoker">smoker</option>
-                  <option value="non-smoking">Non-smoker</option>
+                  <option value="Smoker">smoker</option>
+                  <option defaultValue={true} value="Non-Smoker">
+                    Non-smoker
+                  </option>
                 </select>
               </div>
               <div>
@@ -375,8 +383,10 @@ export default function Home() {
                   onChange={handleChange}
                   value={data.drinkingStatus}
                 >
-                  <option value="drinker">Drinker</option>
-                  <option value="non-drinking">Non-Drinker</option>
+                  <option value="Drinker">Drinker</option>
+                  <option defaultValue={true} value="Non-Drinker">
+                    Non-Drinker
+                  </option>
                 </select>
               </div>
               <div>
@@ -494,8 +504,8 @@ export default function Home() {
                   onChange={handleChange}
                   value={data.replacingOldPolicy}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               <div>
@@ -513,8 +523,8 @@ export default function Home() {
                   onChange={handleChange}
                   value={data.anyLicenceSuspension}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               <div>
