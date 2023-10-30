@@ -818,10 +818,6 @@ export default function Home() {
                 <p>{data.liabilities}</p>
               </div>
               <div className="flex w-full gap-4">
-                <p>Covid : </p>
-                <p>{data.covid}</p>
-              </div>
-              <div className="flex w-full gap-4">
                 <p>Bank # : </p>
                 <p>{data.bankNumber}</p>
               </div>
