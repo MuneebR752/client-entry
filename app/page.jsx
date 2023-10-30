@@ -5,11 +5,8 @@ export default function Home() {
   const [data, setData] = React.useState({
     name: "",
     dob: "",
-    SIN: "",
     email: "",
     phone: "",
-    IDVerification: "",
-    IDExpiryDate: "",
     address: "",
     statusInCanada: "",
     arrivalDate: "",
@@ -26,7 +23,7 @@ export default function Home() {
     smookingStatus: "",
     drinkingStatus: "",
     familyDoctor: "",
-    doctorAddress: "",
+    clinicAddress: "",
     doctorLastVisit: "",
     anyFamilyHistory: "",
     anyHealthIssues: "",
@@ -34,10 +31,10 @@ export default function Home() {
     replacingOldPolicy: "",
     anyLicenceSuspension: "",
     faceAmount: "",
-    beneficiary: "",
+    beneficiary1: "",
+    beneficiary2: "",
     assets: "",
     liabilities: "",
-    covid: "",
     bankNumber: "",
     transitNumber: "",
     accountNumber: "",
@@ -67,6 +64,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="John Doe"
+                  value={data.name}
                 />
               </div>
               <div>
@@ -79,19 +77,7 @@ export default function Home() {
                   name="dob"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="SIN" className="block mb-2 text-sm font-medium">
-                  SIN#
-                </label>
-                <input
-                  type="number"
-                  id="SIN"
-                  name="SIN"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
-                  placeholder="51234"
+                  value={data.dob}
                 />
               </div>
               <div>
@@ -108,6 +94,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="you@site.com"
+                  value={data.email}
                 />
               </div>
               <div>
@@ -124,37 +111,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="(123) 456-7890"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="IDVerification"
-                  className="block mb-2 text-sm font-medium"
-                >
-                  ID Verification #
-                </label>
-                <input
-                  type="number"
-                  name="IDVerification"
-                  id="IDVerification"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
-                  placeholder="12345-6789123-4"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="IDExpiryDate"
-                  className="block mb-2 text-sm font-medium"
-                >
-                  ID Expiry Date
-                </label>
-                <input
-                  type="date"
-                  id="IDExpiryDate"
-                  name="IDExpiryDate"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
+                  value={data.phone}
                 />
               </div>
               <div>
@@ -171,6 +128,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="House #, Street #, City"
+                  value={data.address}
                 />
               </div>
               <div>
@@ -185,6 +143,7 @@ export default function Home() {
                   name="statusInCanada"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.statusInCanada}
                 >
                   <option value="citizen">Citizen</option>
                   <option value="permanentResident">Permanent Resident</option>
@@ -208,6 +167,7 @@ export default function Home() {
                   name="arrivalDate"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.arrivalDate}
                 />
               </div>
               <div>
@@ -224,6 +184,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="5.6"
+                  value={data.height}
                 />
               </div>
               <div>
@@ -240,6 +201,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="65"
+                  value={data.weight}
                 />
               </div>
               <div>
@@ -256,6 +218,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="12"
+                  value={data.yearsInCanada}
                 />
               </div>
               <div>
@@ -272,6 +235,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="Pakistan"
+                  value={data.birthCountry}
                 />
               </div>
               <div>
@@ -286,9 +250,11 @@ export default function Home() {
                   name="maritalStatus"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.maritalStatus}
                 >
                   <option value="single">Single</option>
                   <option value="married">Married</option>
+                  <option value="divorced">Divorced</option>
                 </select>
               </div>
               <div>
@@ -303,6 +269,7 @@ export default function Home() {
                   name="workStatus"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.workStatus}
                 >
                   <option value="employed">Employed</option>
                   <option value="unemployed">Unemployed</option>
@@ -319,10 +286,10 @@ export default function Home() {
                   type="text"
                   id="occupation"
                   name="occupation"
-                  s
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="Doctor"
+                  value={data.occupation}
                 />
               </div>
               <div>
@@ -339,6 +306,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="James Franklin"
+                  value={data.employerName}
                 />
               </div>
               <div>
@@ -355,6 +323,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="#123, Street #, City"
+                  value={data.employerAddress}
                 />
               </div>
               <div>
@@ -371,6 +340,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="12,000"
+                  value={data.annualIncome}
                 />
               </div>
               <div>
@@ -385,6 +355,7 @@ export default function Home() {
                   name="smookingStatus"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.smookingStatus}
                 >
                   <option value="smooker">Smooker</option>
                   <option value="non-smooking">Non-Smooker</option>
@@ -402,6 +373,7 @@ export default function Home() {
                   name="drinkingStatus"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.drinkingStatus}
                 >
                   <option value="drinker">Drinker</option>
                   <option value="non-drinking">Non-Drinker</option>
@@ -421,22 +393,24 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="Dr John Doe"
+                  value={data.familyDoctor}
                 />
               </div>
               <div>
                 <label
-                  htmlFor="doctorAddress"
+                  htmlFor="clinicAddress"
                   className="block mb-2 text-sm font-medium"
                 >
-                  Doctor's Address
+                  Clinic Address
                 </label>
                 <input
                   type="text"
-                  id="doctorAddress"
-                  name="doctorAddress"
+                  id="clinicAddress"
+                  name="clinicAddress"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="#123, Street #, City"
+                  value={data.clinicAddress}
                 />
               </div>
               <div>
@@ -452,6 +426,7 @@ export default function Home() {
                   name="doctorLastVisit"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.doctorLastVisit}
                 />
               </div>
               <div>
@@ -468,6 +443,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="Diabetes"
+                  value={data.anyFamilyHistory}
                 />
               </div>
               <div>
@@ -484,6 +460,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="Diabetes"
+                  value={data.anyHealthIssues}
                 />
               </div>
               <div>
@@ -500,6 +477,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="High Altitude Climbing"
+                  value={data.dangerousSports}
                 />
               </div>
               <div>
@@ -514,6 +492,7 @@ export default function Home() {
                   name="replacingOldPolicy"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.replacingOldPolicy}
                 >
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
@@ -524,7 +503,7 @@ export default function Home() {
                   htmlFor="anyLicenceSuspension"
                   className="block mb-2 text-sm font-medium"
                 >
-                  Any Licence SuspensiS
+                  Any Licence Suspension
                 </label>
 
                 <select
@@ -532,6 +511,7 @@ export default function Home() {
                   id="anyLicenceSuspension"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.anyLicenceSuspension}
                 >
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
@@ -551,22 +531,41 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="$100,000"
+                  value={data.faceAmount}
                 />
               </div>
               <div>
                 <label
-                  htmlFor="beneficiary"
+                  htmlFor="beneficiary1"
                   className="block mb-2 text-sm font-medium"
                 >
-                  Beneficiary
+                  Beneficiary 1
                 </label>
                 <input
                   type="text"
-                  id="beneficiary"
-                  name="beneficiary"
+                  id="beneficiary1"
+                  name="beneficiary1"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="John doe"
+                  value={data.beneficiary1}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="beneficiary2"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Beneficiary 2
+                </label>
+                <input
+                  type="text"
+                  id="beneficiary2"
+                  name="beneficiary2"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="John doe"
+                  value={data.beneficiary2}
                 />
               </div>
               <div>
@@ -583,6 +582,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="$100,000"
+                  value={data.assets}
                 />
               </div>
               <div>
@@ -598,24 +598,8 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="$100,000"
+                  value={data.liabilities}
                 />
-              </div>
-              <div>
-                <label
-                  htmlFor="covid"
-                  className="block mb-2 text-sm font-medium"
-                >
-                  Covid
-                </label>
-                <select
-                  id="covid"
-                  name="covid"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
-                >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
               </div>
               <div>
                 <label
@@ -631,6 +615,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="#123456789"
+                  value={data.bankNumber}
                 />
               </div>
               <div>
@@ -647,6 +632,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="#123456789"
+                  value={data.transitNumber}
                 />
               </div>
               <div>
@@ -663,6 +649,7 @@ export default function Home() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="#123456789"
+                  value={data.accountNumber}
                 />
               </div>
               <div>
@@ -678,6 +665,7 @@ export default function Home() {
                   name="signature"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
+                  value={data.signature}
                 />
               </div>
               <div></div>
@@ -709,24 +697,12 @@ export default function Home() {
                 <p>{data.dob}</p>
               </div>
               <div className="flex w-full gap-4">
-                <p>SIN# : </p>
-                <p>{data.SIN}</p>
-              </div>
-              <div className="flex w-full gap-4">
                 <p>Email : </p>
                 <p>{data.email}</p>
               </div>
               <div className="flex w-full gap-4">
                 <p>Cell Number : </p>
                 <p>{data.phone}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>ID Verification # : </p>
-                <p>{data.IDVerification}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>ID Expiry Date : </p>
-                <p>{data.IDExpiryDate}</p>
               </div>
               <div className="flex w-full gap-4">
                 <p>Address : </p>
@@ -793,8 +769,8 @@ export default function Home() {
                 <p>{data.familyDoctor}</p>
               </div>
               <div className="flex w-full gap-4">
-                <p>Doctor's Address : </p>
-                <p>{data.doctorAddress}</p>
+                <p>Clinic Address : </p>
+                <p>{data.clinicAddress}</p>
               </div>
               <div className="flex w-full gap-4">
                 <p>Doctor's Last Visit : </p>
@@ -825,8 +801,12 @@ export default function Home() {
                 <p>{data.faceAmount}</p>
               </div>
               <div className="flex w-full gap-4">
-                <p>Beneficiary : </p>
-                <p>{data.beneficiary}</p>
+                <p>Beneficiary 1 : </p>
+                <p>{data.beneficiary1}</p>
+              </div>
+              <div className="flex w-full gap-4">
+                <p>Beneficiary 2 : </p>
+                <p>{data.beneficiary2}</p>
               </div>
               <div className="flex w-full gap-4">
                 <p>Assets : </p>
