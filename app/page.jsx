@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { POST } from "./api/add-client/route";
 
 export default function Home() {
   const [data, setData] = React.useState({
@@ -42,6 +43,30 @@ export default function Home() {
   });
   let handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+    let confirmation = confirm("Are you sure you want to submit?");
+    if (confirmation) {
+      try {
+        let res = await fetch("http://localhost:3000/api/add-client", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          alert("Data Submitted Successfully!");
+        }
+        return res.json();
+      } catch (err) {
+        alert("Something went wrong!");
+        console.log(err);
+      }
+    }
+    return;
   };
   return (
     <main>
@@ -605,6 +630,7 @@ export default function Home() {
                 <input
                   type="text"
                   id="liabilities"
+                  name="liabilities"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   placeholder="$100,000"
@@ -682,6 +708,7 @@ export default function Home() {
               <div></div>
               <div className="flex items-end justify-center gap-8">
                 <button
+                  onClick={submit}
                   type="submit"
                   className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all bg-indigo-500 border border-transparent rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                 >
