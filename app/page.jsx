@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import { POST } from "./api/add-client/route";
-
 export default function Home() {
   const [data, setData] = React.useState({
     name: "",
@@ -49,14 +47,18 @@ export default function Home() {
     e.preventDefault();
     let confirmation = confirm("Are you sure you want to submit?");
     if (confirmation) {
+      console.log(process.env.NEXT_PUBLIC_Domain);
       try {
-        let res = await fetch("http://localhost:3000/api/add-client", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        let res = await fetch(
+          `${process.env.NEXT_PUBLIC_Domain}/api/add-client`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
         if (res.ok) {
           alert("Data Submitted Successfully!");
         }
