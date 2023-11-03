@@ -50,7 +50,7 @@ export default function Home() {
       console.log(process.env.NEXT_PUBLIC_Domain);
       try {
         let res = await fetch(
-          `${process.env.NEXT_PUBLIC_Domain}/api/add-client`,
+          `${process.env.NEXT_PUBLIC_API_URL}/api/clients`,
           {
             method: "POST",
             headers: {
@@ -61,6 +61,44 @@ export default function Home() {
         );
         if (res.ok) {
           alert("Data Submitted Successfully!");
+          setData({
+            name: "",
+            dob: "",
+            email: "",
+            phone: "",
+            address: "",
+            statusInCanada: "Citizen",
+            arrivalDate: "",
+            height: "",
+            weight: "",
+            yearsInCanada: "",
+            birthCountry: "",
+            maritalStatus: "Single",
+            workStatus: "Employed",
+            occupation: "",
+            employerName: "",
+            employerAddress: "",
+            annualIncome: "",
+            smokingStatus: "Non-Smoker",
+            drinkingStatus: "Non-Drinker",
+            familyDoctor: "",
+            clinicAddress: "",
+            doctorLastVisit: "",
+            anyFamilyHistory: "",
+            anyHealthIssues: "",
+            dangerousSports: "",
+            replacingOldPolicy: "",
+            anyLicenceSuspension: "",
+            faceAmount: "",
+            beneficiary1: "",
+            beneficiary2: "",
+            assets: "",
+            liabilities: "",
+            bankNumber: "",
+            transitNumber: "",
+            accountNumber: "",
+            signature: "",
+          });
         }
         return res.json();
       } catch (err) {
@@ -719,6 +757,46 @@ export default function Home() {
                 <button
                   type="reset"
                   className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all bg-red-500 border border-transparent rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+                  onClick={() => {
+                    setData({
+                      name: "",
+                      dob: "",
+                      email: "",
+                      phone: "",
+                      address: "",
+                      statusInCanada: "Citizen",
+                      arrivalDate: "",
+                      height: "",
+                      weight: "",
+                      yearsInCanada: "",
+                      birthCountry: "",
+                      maritalStatus: "Single",
+                      workStatus: "Employed",
+                      occupation: "",
+                      employerName: "",
+                      employerAddress: "",
+                      annualIncome: "",
+                      smokingStatus: "Non-Smoker",
+                      drinkingStatus: "Non-Drinker",
+                      familyDoctor: "",
+                      clinicAddress: "",
+                      doctorLastVisit: "",
+                      anyFamilyHistory: "",
+                      anyHealthIssues: "",
+                      dangerousSports: "",
+                      replacingOldPolicy: "",
+                      anyLicenceSuspension: "",
+                      faceAmount: "",
+                      beneficiary1: "",
+                      beneficiary2: "",
+                      assets: "",
+                      liabilities: "",
+                      bankNumber: "",
+                      transitNumber: "",
+                      accountNumber: "",
+                      signature: "",
+                    });
+                  }}
                 >
                   Reset
                 </button>
