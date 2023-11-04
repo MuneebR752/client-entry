@@ -1,28 +1,18 @@
-"use client";
 import React from "react";
-const page = () => {
-  const [clients, setClients] = React.useState([]);
-  React.useEffect(() => {
-    const allClients = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/clients`,
-          {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-        if (res.ok) {
-          const data = await res.json();
-          setClients(data);
-          return data;
-        }
-      } catch (e) {
-        alert("Error: " + e.message);
-      }
-    };
-    allClients();
-  });
+const allClients = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/clients`, {
+      cache: "no-store",
+    });
+    if (res.ok) {
+      const data = await res.json();
+      return data;
+    }
+  } catch (e) {
+    alert("Error: " + e.message);
+  }
+};
+const page = async () => {
   const columns = [
     "Name",
     "Date of Birth",
@@ -62,7 +52,7 @@ const page = () => {
     "Signature",
     "Created At",
   ];
-
+  const clients = await allClients();
   return (
     <main>
       <section className="bg-[#1f2937] w-full min-h-screen">
@@ -113,12 +103,6 @@ const page = () => {
                               type="checkbox"
                               className="text-blue-600 bg-gray-800 border-gray-700 rounded checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
                             />
-                            <label
-                              htmlFor="hs-table-search-checkbox-all"
-                              className="sr-only"
-                            >
-                              Checkbox
-                            </label>
                           </div>
                         </th>
                         {columns.map((column) => (
@@ -145,12 +129,6 @@ const page = () => {
                                 type="checkbox"
                                 className="bg-gray-800 border-gray-700 rounded checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
                               />
-                              <label
-                                htmlFor="hs-table-search-checkbox-1"
-                                className="sr-only"
-                              >
-                                Checkbox
-                              </label>
                             </div>
                           </td>
                           <td className="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap">
