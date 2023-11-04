@@ -1,28 +1,27 @@
 "use client";
 import React from "react";
 const page = () => {
-  const allClients = async () => {
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/clients`,
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      if (res.ok) {
-        const data = await res.json();
-        setClients(data);
-        return data;
-      }
-    } catch (e) {
-      alert("Error: " + e.message);
-    }
-  };
-
   const [clients, setClients] = React.useState([]);
   React.useEffect(() => {
-    setClients(allClients());
+    const allClients = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/clients`,
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        if (res.ok) {
+          const data = await res.json();
+          setClients(data);
+          return data;
+        }
+      } catch (e) {
+        alert("Error: " + e.message);
+      }
+    };
+    allClients();
   }, []);
   console.log(clients);
   const columns = [
@@ -62,11 +61,12 @@ const page = () => {
     "Transit Number",
     "Account Number",
     "Signature",
+    "Created At",
   ];
 
   return (
     <main>
-      <section className="bg-[#1f2937] w-full h-screen">
+      <section className="bg-[#1f2937] w-full min-h-screen">
         <div className="flex flex-col">
           <div className="overflow-x-auto no-scrollbar">
             <div className="p-1.5 min-w-full inline-block align-middle">
@@ -101,6 +101,12 @@ const page = () => {
                   <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead className="bg-gray-50 dark:bg-gray-700">
                       <tr>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
+                        >
+                          #
+                        </th>
                         <th scope="col" className="px-4 py-3 pr-0">
                           <div className="flex items-center h-5">
                             <input
@@ -128,145 +134,136 @@ const page = () => {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                      {clients.map((client) => (
+                      {clients.map((client, i) => (
                         <tr key={client.id}>
-                          <td className="px-4 py-3 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">
+                            {i + 1}
+                          </td>
+                          <td className="py-3 pl-4">
                             <div className="flex items-center h-5">
                               <input
-                                id="hs-table-search-checkbox-0"
+                                id={`hs-table-search-checkbox-${i}`}
                                 type="checkbox"
-                                className="text-blue-600 bg-gray-800 border-gray-700 rounded checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
+                                className=" rounded  bg-gray-800 border-gray-700 checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
                               />
                               <label
-                                htmlFor="hs-table-search-checkbox-0"
+                                htmlFor="hs-table-search-checkbox-1"
                                 className="sr-only"
                               >
                                 Checkbox
                               </label>
                             </div>
                           </td>
-                          <td className="px-6 py-3 whitespace-nowrap">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 w-10 h-10">
-                                <img
-                                  className="w-10 h-10 rounded-full"
-                                  src={client.image}
-                                  alt=""
-                                />
-                              </div>
-                              <div className="ml-4">
-                                <div className="text-sm font-medium text-gray-900">
-                                  {client.name}
-                                </div>
-                                <div className="text-sm text-gray-500">
-                                  {client.email}
-                                </div>
-                              </div>
-                            </div>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">
+                            {client.name}
                           </td>
-                          <td className="px-6 py-3 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">
-                              {client.dob}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {client.phone}
-                            </div>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
+                            {client.dob}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
+                            {client.email}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
+                            {client.phone}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.address}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.statusInCanada}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.arrivalDate}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.height}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.weight}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.yearsInCanada}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.birthCountry}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.maritalStatus}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.workStatus}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.occupation}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.employerName}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.employerAddress}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.annualIncome}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.smokingStatus}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.drinkingStatus}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.familyDoctor}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.clinicAddress}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.doctorLastVisit}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.anyFamilyHistory}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.anyHealthIssues}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.dangerousSports}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.replacingOldPolicy}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
-                            {client.anyLicenseSuspension}
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
+                            {client.anyLicenceSuspension}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.faceAmount}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.beneficiary1}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.beneficiary2}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.assets}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.liabilities}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.bankNumber}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.transitNumber}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.accountNumber}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
                             {client.signature}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
+                            {client.createdAt}
                           </td>
                         </tr>
                       ))}
