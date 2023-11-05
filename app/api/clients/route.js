@@ -27,3 +27,22 @@ export async function GET() {
     return Response.json({ message: "Error getting clients" }, { status: 500 });
   }
 }
+
+export async function DELETE(request) {
+  try {
+    const { id } = await request.json();
+    // const { id } = request.params;
+    const deletedClient = await prisma.client.delete({
+      where: { id: id },
+    });
+
+    return Response.json({ deletedClient, message: "Client deleted" });
+  } catch (error) {
+    console.error("Error deleting a client:", error);
+
+    return Response.json(
+      { message: "Error deleting a client" },
+      { status: 500 }
+    );
+  }
+}

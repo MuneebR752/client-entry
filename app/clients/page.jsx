@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 const page = () => {
+  const [selectedClients, setSelectedClients] = useState([]);
   const [clients, setClients] = React.useState([]);
   React.useEffect(() => {
     const allClients = async () => {
@@ -22,7 +23,7 @@ const page = () => {
       }
     };
     allClients();
-  });
+  }, [clients]);
   const columns = [
     "Name",
     "Date of Birth",
@@ -62,7 +63,42 @@ const page = () => {
     "Signature",
     "Created At",
   ];
-
+  const handleCheckboxChange = (clientId) => {
+    if (selectedClients.includes(clientId)) {
+      setSelectedClients((prevSelectedClients) =>
+        prevSelectedClients.filter((id) => id !== clientId)
+      );
+    } else {
+      setSelectedClients((prevSelectedClients) => [
+        ...prevSelectedClients,
+        clientId,
+      ]);
+    }
+  };
+  const handleDelete = async () => {
+    if (selectedClients.length > 0) {
+      if (confirm("Are you sure you want to delete?")) {
+        selectedClients.map(async (id) => {
+          try {
+            const res = await fetch(
+              `${process.env.NEXT_PUBLIC_API_URL}/api/clients/`,
+              {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id }),
+              }
+            );
+          } catch (e) {
+            alert("Error: " + e.message);
+          }
+        });
+      }
+    } else {
+      alert("Please select a client");
+    }
+  };
   return (
     <main>
       <section className="bg-[#1f2937] w-full min-h-screen">
@@ -70,7 +106,7 @@ const page = () => {
           <div className="overflow-x-auto no-scrollbar">
             <div className="p-1.5 min-w-full inline-block align-middle">
               <div className="border border-gray-700 divide-y divide-gray-700 rounded-lg">
-                <div className="px-4 py-3">
+                <div className="flex gap-8 px-4 py-3">
                   <div className="relative max-w-xs">
                     <label htmlFor="hs-table-search" className="sr-only">
                       Search
@@ -95,6 +131,14 @@ const page = () => {
                       </svg>
                     </div>
                   </div>
+                  <button
+                    className="px-5 text-white bg-red-600 rounded-md hover:bg-red-700"
+                    onClick={() => {
+                      handleDelete();
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
                 <div className="overflow-hidden">
                   <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
@@ -112,6 +156,18 @@ const page = () => {
                               id="hs-table-search-checkbox-all"
                               type="checkbox"
                               className="text-blue-600 bg-gray-800 border-gray-700 rounded checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
+                              checked={
+                                selectedClients.length === clients.length
+                              }
+                              onChange={(e) => {
+                                if (selectedClients.length === clients.length) {
+                                  setSelectedClients([]);
+                                } else {
+                                  setSelectedClients(
+                                    clients.map((client) => client.id)
+                                  );
+                                }
+                              }}
                             />
                             <label
                               htmlFor="hs-table-search-checkbox-all"
@@ -144,6 +200,8 @@ const page = () => {
                                 id={`hs-table-search-checkbox-${i}`}
                                 type="checkbox"
                                 className="bg-gray-800 border-gray-700 rounded checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
+                                checked={selectedClients.includes(client.id)}
+                                onChange={() => handleCheckboxChange(client.id)}
                               />
                               <label
                                 htmlFor="hs-table-search-checkbox-1"
