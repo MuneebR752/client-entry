@@ -159,7 +159,14 @@ const page = () => {
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                       {clients
                         .filter((client) =>
-                          client.name.toLowerCase().includes(search)
+                          Object.values(client).some(
+                            (value) =>
+                              value &&
+                              value
+                                .toString()
+                                .toLowerCase()
+                                .includes(search.toLowerCase())
+                          )
                         )
                         .map((client, i) => (
                           <tr key={client.id}>
