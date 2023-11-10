@@ -142,7 +142,7 @@ export default function Home() {
         <section className="container flex flex-col w-full h-full gap-8 mx-4 my-6 sm:flex-row">
           <div className="sm:w-[70%] w-full overflow-y-scroll no-scrollbar">
             <form className="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2">
-              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+              <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Personal Information
               </h3>
               <div>
@@ -209,7 +209,7 @@ export default function Home() {
                   value={data.phone}
                 />
               </div>
-              <h3 className="col-span-2 my-4 font-medium">Personal Address</h3>
+              <h3 className="my-4 font-medium sm:col-span-2">Personal Address</h3>
               <div>
                 <label
                   htmlFor="address"
@@ -295,8 +295,8 @@ export default function Home() {
                   value={data.postalCode}
                 />
               </div>
-              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
-              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+              <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
+              <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Residencial Information
               </h3>
               <div>
@@ -374,8 +374,8 @@ export default function Home() {
                   value={data.birthCountry}
                 />
               </div>
-              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
-              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+              <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
+              <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Physical Information
               </h3>
               <div>
@@ -412,8 +412,8 @@ export default function Home() {
                   value={data.weight}
                 />
               </div>
-              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
-              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+              <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
+              <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Marital Information
               </h3>
               <div>
@@ -511,8 +511,8 @@ export default function Home() {
                   </div>
                 </>
               )}
-              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
-              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+              <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
+              <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Employment Information
               </h3>
               <div>
@@ -569,7 +569,7 @@ export default function Home() {
                   value={data.employerName}
                 />
               </div>
-              <h3 className="col-span-2 my-4 font-medium">Employer Address</h3>
+              <h3 className="my-4 font-medium sm:col-span-2">Employer Address</h3>
               <div>
                 <label
                   htmlFor="employerAddress"
@@ -672,8 +672,8 @@ export default function Home() {
                   value={data.annualIncome}
                 />
               </div>
-              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
-              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+              <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
+              <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Health Information
               </h3>
               <div>
@@ -733,7 +733,7 @@ export default function Home() {
                   value={data.familyDoctor}
                 />
               </div>
-              <h3 className="col-span-2 my-4 font-medium">Clinic Address</h3>
+              <h3 className="my-4 font-medium sm:col-span-2">Clinic Address</h3>
               <div>
                 <label
                   htmlFor="clinicAddress"
@@ -886,8 +886,8 @@ export default function Home() {
                   value={data.dangerousSports}
                 />
               </div>
-              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
-              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+              <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
+              <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Insurance Information
               </h3>
               <div>
@@ -978,8 +978,8 @@ export default function Home() {
                   value={data.beneficiary2}
                 />
               </div>
-              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
-              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+              <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
+              <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Financial Information
               </h3>
               <div>
@@ -1067,7 +1067,7 @@ export default function Home() {
                   value={data.accountNumber}
                 />
               </div>
-              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
+              <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
               <div>
                 <label
                   htmlFor="signature"
