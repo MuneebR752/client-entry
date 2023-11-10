@@ -18,6 +18,10 @@ model Client {
   email                String   @unique
   phone                String   @unique
   address              String
+  city                 String?
+  streetNo             String
+  suiteNo              String
+  postalCode           String
   statusInCanada       String   @default("Citizen")
   arrivalDate          String?
   height               String
@@ -25,15 +29,27 @@ model Client {
   yearsInCanada        String
   birthCountry         String
   maritalStatus        String   @default("Single")
+  noOfChildren         String?
+  noOfMaleChildren     String?
+  noOfFemaleChildren   String?
+  noOfInfantChildren   String?
   workStatus           String   @default("Employed")
   occupation           String
   employerName         String
   employerAddress      String
+  employerCity         String
+  employerStreetNo     String
+  employerSuiteNo      String
+  employerPostalCode   String
   annualIncome         String
   smokingStatus        String   @default("Non-Smoker")
   drinkingStatus       String   @default("Non-Drinker")
   familyDoctor         String
   clinicAddress        String
+  clinicCity           String
+  clinicStreetNo       String
+  clinicSuiteNo        String
+  clinicPostalCode     String
   doctorLastVisit      String
   anyFamilyHistory     String
   anyHealthIssues      String

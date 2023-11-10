@@ -7,6 +7,10 @@ export default function Home() {
     email: "",
     phone: "",
     address: "",
+    city: "",
+    streetNo: "",
+    suiteNo: "",
+    postalCode: "",
     statusInCanada: "Citizen",
     arrivalDate: "",
     height: "",
@@ -14,15 +18,27 @@ export default function Home() {
     yearsInCanada: "",
     birthCountry: "",
     maritalStatus: "Single",
+    noOfChildren: "",
+    noOfMaleChildren: "",
+    noOfFemaleChildren: "",
+    noOfInfantChildren: "",
     workStatus: "Employed",
     occupation: "",
     employerName: "",
     employerAddress: "",
+    employerCity: "",
+    employerStreetNo: "",
+    employerSuiteNo: "",
+    employerPostalCode: "",
     annualIncome: "",
     smokingStatus: "Non-Smoker",
     drinkingStatus: "Non-Drinker",
     familyDoctor: "",
     clinicAddress: "",
+    clinicCity: "",
+    clinicStreetNo: "",
+    clinicSuiteNo: "",
+    clinicPostalCode: "",
     doctorLastVisit: "",
     anyFamilyHistory: "",
     anyHealthIssues: "",
@@ -47,18 +63,14 @@ export default function Home() {
     e.preventDefault();
     let confirmation = confirm("Are you sure you want to submit?");
     if (confirmation) {
-      console.log(process.env.NEXT_PUBLIC_Domain);
       try {
-        let res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/clients`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        );
+        let res = await fetch(`${location.origin}/api/clients`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
         if (res.ok) {
           alert("Data Submitted Successfully!");
           setData({
@@ -67,6 +79,10 @@ export default function Home() {
             email: "",
             phone: "",
             address: "",
+            city: "",
+            streetNo: "",
+            suiteNo: "",
+            postalCode: "",
             statusInCanada: "Citizen",
             arrivalDate: "",
             height: "",
@@ -74,15 +90,27 @@ export default function Home() {
             yearsInCanada: "",
             birthCountry: "",
             maritalStatus: "Single",
+            noOfChildren: "",
+            noOfMaleChildren: "",
+            noOfFemaleChildren: "",
+            noOfInfantChildren: "",
             workStatus: "Employed",
             occupation: "",
             employerName: "",
             employerAddress: "",
+            employerCity: "",
+            employerStreetNo: "",
+            employerSuiteNo: "",
+            employerPostalCode: "",
             annualIncome: "",
             smokingStatus: "Non-Smoker",
             drinkingStatus: "Non-Drinker",
             familyDoctor: "",
             clinicAddress: "",
+            clinicCity: "",
+            clinicStreetNo: "",
+            clinicSuiteNo: "",
+            clinicPostalCode: "",
             doctorLastVisit: "",
             anyFamilyHistory: "",
             anyHealthIssues: "",
@@ -113,8 +141,10 @@ export default function Home() {
       <section className="h-[calc(100vh-3.5rem)] bg-[#1f2937] flex justify-center items-center text-white">
         <section className="container flex flex-col w-full h-full gap-8 mx-4 my-6 sm:flex-row">
           <div className="sm:w-[70%] w-full overflow-y-scroll no-scrollbar">
-            <h3 className="my-4 text-xl font-medium">Add Client Data</h3>
             <form className="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2">
+              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+                Personal Information
+              </h3>
               <div>
                 <label
                   htmlFor="name"
@@ -179,6 +209,7 @@ export default function Home() {
                   value={data.phone}
                 />
               </div>
+              <h3 className="col-span-2 my-4 font-medium">Personal Address</h3>
               <div>
                 <label
                   htmlFor="address"
@@ -196,6 +227,78 @@ export default function Home() {
                   value={data.address}
                 />
               </div>
+              <div>
+                <label
+                  htmlFor="city"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  City
+                </label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="Ottawa"
+                  value={data.city}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="streetNo"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Street #
+                </label>
+                <input
+                  type="number"
+                  id="streetNo"
+                  name="streetNo"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="2"
+                  value={data.streetNo}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="suiteNo"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Unit / Suite #
+                </label>
+                <input
+                  type="number"
+                  id="suiteNo"
+                  name="suiteNo"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="2"
+                  value={data.suiteNo}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="postalCode"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Postal Code
+                </label>
+                <input
+                  type="number"
+                  id="postalCode"
+                  name="postalCode"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="54000"
+                  value={data.postalCode}
+                />
+              </div>
+              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
+              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+                Residencial Information
+              </h3>
               <div>
                 <label
                   htmlFor="statusInCanada"
@@ -239,40 +342,6 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="height"
-                  className="block mb-2 text-sm font-medium"
-                >
-                  Height (in feet)
-                </label>
-                <input
-                  type="number"
-                  id="height"
-                  name="height"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
-                  placeholder="5.6"
-                  value={data.height}
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="weight"
-                  className="block mb-2 text-sm font-medium"
-                >
-                  Weight (in kg)
-                </label>
-                <input
-                  type="number"
-                  id="weight"
-                  name="weight"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
-                  placeholder="65"
-                  value={data.weight}
-                />
-              </div>
-              <div>
-                <label
                   htmlFor="yearsInCanada"
                   className="block mb-2 text-sm font-medium"
                 >
@@ -305,6 +374,48 @@ export default function Home() {
                   value={data.birthCountry}
                 />
               </div>
+              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
+              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+                Physical Information
+              </h3>
+              <div>
+                <label
+                  htmlFor="height"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Height (in feet)
+                </label>
+                <input
+                  type="number"
+                  id="height"
+                  name="height"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="5.6"
+                  value={data.height}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="weight"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Weight (in kg)
+                </label>
+                <input
+                  type="number"
+                  id="weight"
+                  name="weight"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="65"
+                  value={data.weight}
+                />
+              </div>
+              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
+              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+                Marital Information
+              </h3>
               <div>
                 <label
                   htmlFor="maritalStatus"
@@ -326,6 +437,84 @@ export default function Home() {
                   <option value="Divorced">Divorced</option>
                 </select>
               </div>
+              {data.maritalStatus === "Married" && (
+                <div>
+                  <label
+                    htmlFor="noOfChildren"
+                    className="block mb-2 text-sm font-medium"
+                  >
+                    No Of Children
+                  </label>
+                  <input
+                    type="number"
+                    id="noOfChildren"
+                    name="noOfChildren"
+                    className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                    onChange={handleChange}
+                    placeholder="3"
+                    value={data.noOfChildren}
+                  />
+                </div>
+              )}
+              {data.noOfChildren > 0 && (
+                <>
+                  <div>
+                    <label
+                      htmlFor="noOfMaleChildren"
+                      className="block mb-2 text-sm font-medium"
+                    >
+                      No Of Male Children
+                    </label>
+                    <input
+                      type="number"
+                      id="noOfMaleChildren"
+                      name="noOfMaleChildren"
+                      className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                      onChange={handleChange}
+                      placeholder="2"
+                      value={data.noOfMaleChildren}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="noOfFemaleChildren"
+                      className="block mb-2 text-sm font-medium"
+                    >
+                      No Of Female Children
+                    </label>
+                    <input
+                      type="number"
+                      id="noOfFemaleChildren"
+                      name="noOfFemaleChildren"
+                      className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                      onChange={handleChange}
+                      placeholder="2"
+                      value={data.noOfFemaleChildren}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="noOfInfantChildren"
+                      className="block mb-2 text-sm font-medium"
+                    >
+                      No Of Infants
+                    </label>
+                    <input
+                      type="number"
+                      id="noOfInfantChildren"
+                      name="noOfInfantChildren"
+                      className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                      onChange={handleChange}
+                      placeholder="1"
+                      value={data.noOfInfantChildren}
+                    />
+                  </div>
+                </>
+              )}
+              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
+              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+                Employment Information
+              </h3>
               <div>
                 <label
                   htmlFor="workStatus"
@@ -380,6 +569,7 @@ export default function Home() {
                   value={data.employerName}
                 />
               </div>
+              <h3 className="col-span-2 my-4 font-medium">Employer Address</h3>
               <div>
                 <label
                   htmlFor="employerAddress"
@@ -399,6 +589,74 @@ export default function Home() {
               </div>
               <div>
                 <label
+                  htmlFor="employerCity"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Employer City
+                </label>
+                <input
+                  type="text"
+                  id="employerCity"
+                  name="employerCity"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="Ottawa"
+                  value={data.employerCity}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="employerStreetNo"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Employer Street #
+                </label>
+                <input
+                  type="number"
+                  id="employerStreetNo"
+                  name="employerStreetNo"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="2"
+                  value={data.employerStreetNo}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="employerSuiteNo"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Employer Suite #
+                </label>
+                <input
+                  type="number"
+                  id="employerSuiteNo"
+                  name="employerSuiteNo"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="2"
+                  value={data.employerSuiteNo}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="employerPostalCode"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Employer Postal Code
+                </label>
+                <input
+                  type="number"
+                  id="employerPostalCode"
+                  name="employerPostalCode"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="54000"
+                  value={data.employerPostalCode}
+                />
+              </div>
+              <div>
+                <label
                   htmlFor="annualIncome"
                   className="block mb-2 text-sm font-medium"
                 >
@@ -414,6 +672,10 @@ export default function Home() {
                   value={data.annualIncome}
                 />
               </div>
+              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
+              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+                Health Information
+              </h3>
               <div>
                 <label
                   htmlFor="smokingStatus"
@@ -471,6 +733,7 @@ export default function Home() {
                   value={data.familyDoctor}
                 />
               </div>
+              <h3 className="col-span-2 my-4 font-medium">Clinic Address</h3>
               <div>
                 <label
                   htmlFor="clinicAddress"
@@ -486,6 +749,74 @@ export default function Home() {
                   onChange={handleChange}
                   placeholder="#123, Street #, City"
                   value={data.clinicAddress}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="clinicCity"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Clinic City
+                </label>
+                <input
+                  type="text"
+                  id="clinicCity"
+                  name="clinicCity"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="Ottawa"
+                  value={data.clinicCity}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="clinicStreetNo"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Clinic Street #
+                </label>
+                <input
+                  type="number"
+                  id="clinicStreetNo"
+                  name="clinicStreetNo"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="123"
+                  value={data.clinicStreetNo}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="clinicSuiteNo"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Clinic Suite #
+                </label>
+                <input
+                  type="number"
+                  id="clinicSuiteNo"
+                  name="clinicSuiteNo"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="2"
+                  value={data.clinicSuiteNo}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="clinicPostalCode"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Clinic Postal Code
+                </label>
+                <input
+                  type="number"
+                  id="clinicPostalCode"
+                  name="clinicPostalCode"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="54000"
+                  value={data.clinicPostalCode}
                 />
               </div>
               <div>
@@ -555,6 +886,10 @@ export default function Home() {
                   value={data.dangerousSports}
                 />
               </div>
+              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
+              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+                Insurance Information
+              </h3>
               <div>
                 <label
                   htmlFor="replacingOldPolicy"
@@ -643,6 +978,10 @@ export default function Home() {
                   value={data.beneficiary2}
                 />
               </div>
+              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
+              <h3 className="col-span-2 my-4 text-xl font-medium text-center">
+                Financial Information
+              </h3>
               <div>
                 <label
                   htmlFor="assets"
@@ -728,6 +1067,7 @@ export default function Home() {
                   value={data.accountNumber}
                 />
               </div>
+              <hr className="w-48 h-1 col-span-2 mx-auto my-4 bg-gray-700 border-0 rounded md:my-10"></hr>
               <div>
                 <label
                   htmlFor="signature"
@@ -745,6 +1085,7 @@ export default function Home() {
                   placeholder="AA"
                 />
               </div>
+              <div></div>
               <div></div>
               <div className="flex items-end justify-center gap-8">
                 <button

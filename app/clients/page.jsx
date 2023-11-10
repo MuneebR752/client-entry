@@ -8,13 +8,10 @@ const page = () => {
   React.useEffect(() => {
     const allClients = async () => {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/clients`,
-          {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          }
-        );
+        const res = await fetch(`${location.origin}/api/clients`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
         if (res.ok) {
           const data = await res.json();
           setClients(data);
@@ -43,16 +40,13 @@ const page = () => {
       if (confirm("Are you sure you want to delete?")) {
         selectedClients.map(async (id) => {
           try {
-            const res = await fetch(
-              `${process.env.NEXT_PUBLIC_API_URL}/api/clients/`,
-              {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ id }),
-              }
-            );
+            const res = await fetch(`${location.origin}/api/clients/`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ id }),
+            });
           } catch (e) {
             alert("Error: " + e.message);
           }
@@ -208,16 +202,22 @@ const page = () => {
                               {client.address}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.city}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.streetNo}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.suiteNo}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.postalCode}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.statusInCanada}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.arrivalDate}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.height}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.weight}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.yearsInCanada}
@@ -226,7 +226,25 @@ const page = () => {
                               {client.birthCountry}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.height}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.weight}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.maritalStatus}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.noOfChildren}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.noOfMaleChildren}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.noOfFemaleChildren}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.noOfInfantChildren}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.workStatus}
@@ -239,6 +257,18 @@ const page = () => {
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.employerAddress}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.employerCity}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.employerStreetNo}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.employerSuiteNo}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.employerPostalCode}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.annualIncome}
@@ -254,6 +284,18 @@ const page = () => {
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.clinicAddress}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.clinicCity}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.clinicStreetNo}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.clinicSuiteNo}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.clinicPostalCode}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.doctorLastVisit}
