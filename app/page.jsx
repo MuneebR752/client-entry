@@ -18,12 +18,15 @@ export default function Home() {
     yearsInCanada: "",
     birthCountry: "",
     maritalStatus: "Single",
+    spouseName: "",
+    spouseDob: "",
     noOfChildren: "",
     noOfMaleChildren: "",
     noOfFemaleChildren: "",
     noOfInfantChildren: "",
     workStatus: "Employed",
     occupation: "",
+    jobResponsibilities: "",
     employerName: "",
     employerAddress: "",
     employerCity: "",
@@ -33,6 +36,9 @@ export default function Home() {
     annualIncome: "",
     smokingStatus: "Non-Smoker",
     drinkingStatus: "Non-Drinker",
+    drinkType: "",
+    anyMedication: "No",
+    whichMedication: "",
     familyDoctor: "",
     clinicAddress: "",
     clinicCity: "",
@@ -40,6 +46,7 @@ export default function Home() {
     clinicSuiteNo: "",
     clinicPostalCode: "",
     doctorLastVisit: "",
+    reasonForLastVisit: "",
     anyFamilyHistory: "",
     anyHealthIssues: "",
     dangerousSports: "",
@@ -90,12 +97,15 @@ export default function Home() {
             yearsInCanada: "",
             birthCountry: "",
             maritalStatus: "Single",
+            spouseName: "",
+            spouseDob: "",
             noOfChildren: "",
             noOfMaleChildren: "",
             noOfFemaleChildren: "",
             noOfInfantChildren: "",
             workStatus: "Employed",
             occupation: "",
+            jobResponsibilities: "",
             employerName: "",
             employerAddress: "",
             employerCity: "",
@@ -103,15 +113,19 @@ export default function Home() {
             employerSuiteNo: "",
             employerPostalCode: "",
             annualIncome: "",
+            familyDoctor: "",
             smokingStatus: "Non-Smoker",
             drinkingStatus: "Non-Drinker",
-            familyDoctor: "",
+            drinkType: "",
+            anyMedication: "No",
+            whichMedication: "",
             clinicAddress: "",
             clinicCity: "",
             clinicStreetNo: "",
             clinicSuiteNo: "",
             clinicPostalCode: "",
             doctorLastVisit: "",
+            reasonForLastVisit: "",
             anyFamilyHistory: "",
             anyHealthIssues: "",
             dangerousSports: "",
@@ -209,7 +223,9 @@ export default function Home() {
                   value={data.phone}
                 />
               </div>
-              <h3 className="my-4 font-medium sm:col-span-2">Personal Address</h3>
+              <h3 className="my-4 font-medium sm:col-span-2">
+                Personal Address
+              </h3>
               <div>
                 <label
                   htmlFor="address"
@@ -438,25 +454,67 @@ export default function Home() {
                 </select>
               </div>
               {data.maritalStatus === "Married" && (
-                <div>
-                  <label
-                    htmlFor="noOfChildren"
-                    className="block mb-2 text-sm font-medium"
-                  >
-                    No Of Children
-                  </label>
-                  <input
-                    type="number"
-                    id="noOfChildren"
-                    name="noOfChildren"
-                    className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                    onChange={handleChange}
-                    placeholder="3"
-                    value={data.noOfChildren}
-                  />
-                </div>
+                <>
+                  <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
+                    Spouse Information
+                  </h3>
+                  <div>
+                    <label
+                      htmlFor="spouseName"
+                      className="block mb-2 text-sm font-medium"
+                    >
+                      Spouse Name
+                    </label>
+                    <input
+                      type="text"
+                      id="spouseName"
+                      name="spouseName"
+                      className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                      onChange={handleChange}
+                      placeholder="Anna Doe"
+                      value={data.spouseName}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="spouseDob"
+                      className="block mb-2 text-sm font-medium"
+                    >
+                      Spouse Date of Birth
+                    </label>
+                    <input
+                      type="date"
+                      id="spouseDob"
+                      name="spouseDob"
+                      className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                      onChange={handleChange}
+                      placeholder=""
+                      value={data.spouseDob}
+                    />
+                  </div>
+                  <h3 className="my-4 font-medium sm:col-span-2">
+                    Children Information
+                  </h3>
+                  <div>
+                    <label
+                      htmlFor="noOfChildren"
+                      className="block mb-2 text-sm font-medium"
+                    >
+                      No Of Children
+                    </label>
+                    <input
+                      type="number"
+                      id="noOfChildren"
+                      name="noOfChildren"
+                      className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                      onChange={handleChange}
+                      placeholder="3"
+                      value={data.noOfChildren}
+                    />
+                  </div>
+                </>
               )}
-              {data.noOfChildren > 0 && (
+              {data.maritalStatus === "Married" && data.noOfChildren > 0 && (
                 <>
                   <div>
                     <label
@@ -554,6 +612,23 @@ export default function Home() {
               </div>
               <div>
                 <label
+                  htmlFor="jobResponsibilities"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Job Responsibilities
+                </label>
+                <input
+                  type="text"
+                  id="jobResponsibilities"
+                  name="jobResponsibilities"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="General Physician"
+                  value={data.jobResponsibilities}
+                />
+              </div>
+              <div>
+                <label
                   htmlFor="employerName"
                   className="block mb-2 text-sm font-medium"
                 >
@@ -569,7 +644,10 @@ export default function Home() {
                   value={data.employerName}
                 />
               </div>
-              <h3 className="my-4 font-medium sm:col-span-2">Employer Address</h3>
+              
+              <h3 className="my-4 font-medium sm:col-span-2">
+                Employer Address
+              </h3>
               <div>
                 <label
                   htmlFor="employerAddress"
@@ -678,6 +756,23 @@ export default function Home() {
               </h3>
               <div>
                 <label
+                  htmlFor="familyDoctor"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Family Doctor
+                </label>
+                <input
+                  type="text"
+                  id="familyDoctor"
+                  name="familyDoctor"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="Dr John Doe"
+                  value={data.familyDoctor}
+                />
+              </div>
+              <div>
+                <label
                   htmlFor="smokingStatus"
                   className="block mb-2 text-sm font-medium"
                 >
@@ -716,21 +811,147 @@ export default function Home() {
                   </option>
                 </select>
               </div>
+
+              {data.drinkingStatus === "Drinker" && (
+                <div>
+                  <label
+                    htmlFor="drinkType"
+                    className="block mb-2 text-sm font-medium"
+                  >
+                    Drink Type
+                  </label>
+                  <select
+                    id="drinkType"
+                    name="drinkType"
+                    className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                    onChange={handleChange}
+                    value={data.drinkType}
+                  >
+                    <option value="Beer">Beer</option>
+                    <option value="Wine">Wine</option>
+                    <option value="Hard-Liquor">Hard liquor</option>
+                  </select>
+                </div>
+              )}
               <div>
                 <label
-                  htmlFor="familyDoctor"
+                  htmlFor="anyMedication"
                   className="block mb-2 text-sm font-medium"
                 >
-                  Family Doctor
+                  Any Medication
+                </label>
+                <select
+                  id="anyMedication"
+                  name="anyMedication"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  value={data.anyMedication}
+                >
+                  <option value="Yes">Yes</option>
+                  <option defaultValue={true} value="No">
+                    No
+                  </option>
+                </select>
+              </div>
+              {data.anyMedication === "Yes" && (
+                <div>
+                  <label
+                    htmlFor="whichMedication"
+                    className="block mb-2 text-sm font-medium"
+                  >
+                    Which Medication
+                  </label>
+                  <input
+                    type="text"
+                    id="whichMedication"
+                    name="whichMedication"
+                    className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                    onChange={handleChange}
+                    value={data.whichMedication}
+                  />
+                </div>
+              )}
+                            <div>
+                <label
+                  htmlFor="doctorLastVisit"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Doctor's Last Visit
+                </label>
+                <input
+                  type="date"
+                  id="doctorLastVisit"
+                  name="doctorLastVisit"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  value={data.doctorLastVisit}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="reasonForLastVisit"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Reason For Last Visit
                 </label>
                 <input
                   type="text"
-                  id="familyDoctor"
-                  name="familyDoctor"
+                  id="reasonForLastVisit"
+                  name="reasonForLastVisit"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  placeholder="Dr John Doe"
-                  value={data.familyDoctor}
+                  value={data.reasonForLastVisit}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="anyFamilyHistory"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Any Family History
+                </label>
+                <input
+                  type="text"
+                  id="anyFamilyHistory"
+                  name="anyFamilyHistory"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="Diabetes"
+                  value={data.anyFamilyHistory}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="anyHealthIssues"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Any Health Issues
+                </label>
+                <input
+                  type="text"
+                  id="anyHealthIssues"
+                  name="anyHealthIssues"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="Diabetes"
+                  value={data.anyHealthIssues}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="dangerousSports"
+                  className="block mb-2 text-sm font-medium"
+                >
+                  Dangerous Sports
+                </label>
+                <input
+                  type="text"
+                  id="dangerousSports"
+                  name="dangerousSports"
+                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  onChange={handleChange}
+                  placeholder="High Altitude Climbing"
+                  value={data.dangerousSports}
                 />
               </div>
               <h3 className="my-4 font-medium sm:col-span-2">Clinic Address</h3>
@@ -819,73 +1040,7 @@ export default function Home() {
                   value={data.clinicPostalCode}
                 />
               </div>
-              <div>
-                <label
-                  htmlFor="doctorLastVisit"
-                  className="block mb-2 text-sm font-medium"
-                >
-                  Doctor's Last Visit
-                </label>
-                <input
-                  type="date"
-                  id="doctorLastVisit"
-                  name="doctorLastVisit"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
-                  value={data.doctorLastVisit}
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="anyFamilyHistory"
-                  className="block mb-2 text-sm font-medium"
-                >
-                  Any Family History
-                </label>
-                <input
-                  type="text"
-                  id="anyFamilyHistory"
-                  name="anyFamilyHistory"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
-                  placeholder="Diabetes"
-                  value={data.anyFamilyHistory}
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="anyHealthIssues"
-                  className="block mb-2 text-sm font-medium"
-                >
-                  Any Health Issues
-                </label>
-                <input
-                  type="text"
-                  id="anyHealthIssues"
-                  name="anyHealthIssues"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
-                  placeholder="Diabetes"
-                  value={data.anyHealthIssues}
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="dangerousSports"
-                  className="block mb-2 text-sm font-medium"
-                >
-                  Dangerous Sports
-                </label>
-                <input
-                  type="text"
-                  id="dangerousSports"
-                  name="dangerousSports"
-                  className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                  onChange={handleChange}
-                  placeholder="High Altitude Climbing"
-                  value={data.dangerousSports}
-                />
-              </div>
+
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
               <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Insurance Information
@@ -1112,16 +1267,23 @@ export default function Home() {
                       yearsInCanada: "",
                       birthCountry: "",
                       maritalStatus: "Single",
+                      spouseName: "",
+                      spouseDob: "",
                       workStatus: "Employed",
                       occupation: "",
+                      jobResponsibilities: "",
                       employerName: "",
                       employerAddress: "",
                       annualIncome: "",
                       smokingStatus: "Non-Smoker",
                       drinkingStatus: "Non-Drinker",
+                      drinkType: "",
+                      anyMedication: "No",
+                      whichMedication: "",
                       familyDoctor: "",
                       clinicAddress: "",
                       doctorLastVisit: "",
+                      reasonForLastVisit: "",
                       anyFamilyHistory: "",
                       anyHealthIssues: "",
                       dangerousSports: "",

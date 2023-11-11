@@ -235,6 +235,12 @@ const page = () => {
                               {client.maritalStatus}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.spouseName}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.spouseDob}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.noOfChildren}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
@@ -251,6 +257,9 @@ const page = () => {
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.occupation}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.jobResponsibilities}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.employerName}
@@ -280,6 +289,15 @@ const page = () => {
                               {client.drinkingStatus}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.drinkType}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.anyMedication}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.whichMedication}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.familyDoctor}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
@@ -299,6 +317,9 @@ const page = () => {
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.doctorLastVisit}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.reasonForLastVisit}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.anyFamilyHistory}
