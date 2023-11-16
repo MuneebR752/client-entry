@@ -20,10 +20,12 @@ export default function Home() {
     maritalStatus: "Single",
     spouseName: "",
     spouseDob: "",
-    noOfChildren: "",
+    noOfChildren: 0,
     noOfMaleChildren: "",
     noOfFemaleChildren: "",
     noOfInfantChildren: "",
+    childNames: [],
+    childDobs: [],
     workStatus: "Employed",
     occupation: "",
     jobResponsibilities: "",
@@ -99,10 +101,12 @@ export default function Home() {
             maritalStatus: "Single",
             spouseName: "",
             spouseDob: "",
-            noOfChildren: "",
+            noOfChildren: 0,
             noOfMaleChildren: "",
             noOfFemaleChildren: "",
             noOfInfantChildren: "",
+            childNames: [],
+            childDobs: [],
             workStatus: "Employed",
             occupation: "",
             jobResponsibilities: "",
@@ -507,9 +511,20 @@ export default function Home() {
                       id="noOfChildren"
                       name="noOfChildren"
                       className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                      onChange={handleChange}
+                      onChange={(e) => {
+                        let temp = [];
+                        for (let i = 0; i < parseInt(e.target.value); i++) {
+                          temp.push("");
+                        }
+                        setData({
+                          ...data,
+                          noOfChildren: parseInt(e.target.value),
+                          childNames: temp,
+                          childDobs: temp,
+                        });
+                      }}
                       placeholder="3"
-                      value={data.noOfChildren}
+                      value={(data.noOfChildren = 0 ? "" : data.noOfChildren)}
                     />
                   </div>
                 </>
@@ -569,6 +584,104 @@ export default function Home() {
                   </div>
                 </>
               )}
+              {data.noOfChildren > 0 &&
+                // [...Array(data.noOfChildren)].map((_, index) => (
+                //   <>
+                //     <div key={index + 1}>
+                //       <label
+                //         // htmlFor="noOfInfantChildren"
+                //         className="block mb-2 text-sm font-medium"
+                //       >
+                //         Child #{index + 1} Name
+                //       </label>
+                //       <input
+                //         type="text"
+                //         className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                //         placeholder="John Doe"
+                //         onChange={(e) => {
+                //           let temp = data.childNames;
+                //           temp[index] = e.target.value;
+                //           setData({
+                //             ...data,
+                //             childNames: temp,
+                //           });
+                //         }}
+                //         value={data.childNames[index]}
+                //       />
+                //     </div>
+                //     <div key={index + 1}>
+                //       <label
+                //         // htmlFor="noOfInfantChildren"
+                //         className="block mb-2 text-sm font-medium"
+                //       >
+                //         Child #{index + 1} Date of Birth
+                //       </label>
+                //       <input
+                //         type="date"
+                //         className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                //         onChange={(e) => {
+                //           let temp = data.childDobs;
+                //           temp[index] = e.target.value;
+                //           setData({
+                //             ...data,
+                //             childDobs: temp,
+                //           });
+                //           console.log(data);
+                //         }}
+                //         value={data.childDobs[index]}
+                //       />
+                //     </div>
+                //   </>
+                // ))
+                [...Array(data.noOfChildren)].map((_, index) => (
+                  <>
+                    <div key={index + 1}>
+                      <label
+                        htmlFor="noOfInfantChildren"
+                        className="block mb-2 text-sm font-medium"
+                      >
+                        Child #{index + 1} Name
+                      </label>
+                      <input
+                        type="text"
+                        className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                        placeholder="John Doe"
+                        onChange={(e) => {
+                          let temp = data.childNames;
+                          temp[index] = e.target.value;
+                          setData({
+                            ...data,
+                            childNames: temp,
+                          });
+                          console.log(data);
+                        }}
+                        value={data.childNames[index]}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="noOfInfantChildren"
+                        className="block mb-2 text-sm font-medium"
+                      >
+                        Child #{index + 1} Date of Birth
+                      </label>
+                      <input
+                        type="date"
+                        className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                        onChange={(e) => {
+                          let temp = data.childDobs;
+                          temp[index] = e.target.value;
+                          setData({
+                            ...data,
+                            childDobs: temp,
+                          });
+                          console.log(data);
+                        }}
+                        value={data.childDobs[index]}
+                      />
+                    </div>
+                  </>
+                ))}
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
               <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Employment Information
@@ -644,7 +757,7 @@ export default function Home() {
                   value={data.employerName}
                 />
               </div>
-              
+
               <h3 className="my-4 font-medium sm:col-span-2">
                 Employer Address
               </h3>
@@ -871,7 +984,7 @@ export default function Home() {
                   />
                 </div>
               )}
-                            <div>
+              <div>
                 <label
                   htmlFor="doctorLastVisit"
                   className="block mb-2 text-sm font-medium"
