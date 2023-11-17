@@ -11,7 +11,6 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-
 model Client {
   id                   String   @id @default(uuid())
   name                 String
@@ -32,10 +31,12 @@ model Client {
   maritalStatus        String   @default("Single")
   spouseName           String?
   spouseDob            String?
-  noOfChildren         String?
+  noOfChildren         Int?
   noOfMaleChildren     String?
   noOfFemaleChildren   String?
   noOfInfantChildren   String?
+  childNames           String[] @default([])
+  childDobs            String[] @default([])
   workStatus           String   @default("Employed")
   occupation           String
   jobResponsibilities  String
@@ -49,6 +50,7 @@ model Client {
   smokingStatus        String   @default("Non-Smoker")
   drinkingStatus       String   @default("Non-Drinker")
   drinkType            String?
+  drinksPerDay         String?
   anyMedication        String   @default("No")
   whichMedication      String?
   familyDoctor         String

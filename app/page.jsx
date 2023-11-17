@@ -39,6 +39,7 @@ export default function Home() {
     smokingStatus: "Non-Smoker",
     drinkingStatus: "Non-Drinker",
     drinkType: "",
+    drinksPerDay: "",
     anyMedication: "No",
     whichMedication: "",
     familyDoctor: "",
@@ -121,6 +122,7 @@ export default function Home() {
             smokingStatus: "Non-Smoker",
             drinkingStatus: "Non-Drinker",
             drinkType: "",
+    drinksPerDay: "",
             anyMedication: "No",
             whichMedication: "",
             clinicAddress: "",
@@ -154,12 +156,39 @@ export default function Home() {
     }
     return;
   };
+  const handleChildNameChange = (index, value) => {
+    setData((prevData) => {
+      const updatedChildNames = [...prevData.childNames];
+      updatedChildNames[index] = value;
+
+      return {
+        ...prevData,
+        childNames: updatedChildNames,
+      };
+    });
+  };
+
+  const handleChildDOBChange = (index, value) => {
+    setData((prevData) => {
+      const updatedChildDobs = [...prevData.childDobs];
+      updatedChildDobs[index] = value;
+
+      return {
+        ...prevData,
+        childDobs: updatedChildDobs,
+      };
+    });
+  };
+
   return (
     <main>
       <section className="h-[calc(100vh-3.5rem)] bg-[#1f2937] flex justify-center items-center text-white">
         <section className="container flex flex-col w-full h-full gap-8 mx-4 my-6 sm:flex-row">
           <div className="sm:w-[70%] w-full overflow-y-scroll no-scrollbar">
-            <form className="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2">
+            <form
+              onSubmit={submit}
+              className="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2"
+            >
               <h3 className="my-4 text-xl font-medium text-center sm:col-span-2">
                 Personal Information
               </h3>
@@ -277,7 +306,7 @@ export default function Home() {
                   name="streetNo"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  placeholder="2"
+                  placeholder="#"
                   value={data.streetNo}
                 />
               </div>
@@ -294,7 +323,7 @@ export default function Home() {
                   name="suiteNo"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  placeholder="2"
+                  placeholder="#"
                   value={data.suiteNo}
                 />
               </div>
@@ -311,7 +340,7 @@ export default function Home() {
                   name="postalCode"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  placeholder="54000"
+                  placeholder="A4G K0J"
                   value={data.postalCode}
                 />
               </div>
@@ -585,54 +614,6 @@ export default function Home() {
                 </>
               )}
               {data.noOfChildren > 0 &&
-                // [...Array(data.noOfChildren)].map((_, index) => (
-                //   <>
-                //     <div key={index + 1}>
-                //       <label
-                //         // htmlFor="noOfInfantChildren"
-                //         className="block mb-2 text-sm font-medium"
-                //       >
-                //         Child #{index + 1} Name
-                //       </label>
-                //       <input
-                //         type="text"
-                //         className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                //         placeholder="John Doe"
-                //         onChange={(e) => {
-                //           let temp = data.childNames;
-                //           temp[index] = e.target.value;
-                //           setData({
-                //             ...data,
-                //             childNames: temp,
-                //           });
-                //         }}
-                //         value={data.childNames[index]}
-                //       />
-                //     </div>
-                //     <div key={index + 1}>
-                //       <label
-                //         // htmlFor="noOfInfantChildren"
-                //         className="block mb-2 text-sm font-medium"
-                //       >
-                //         Child #{index + 1} Date of Birth
-                //       </label>
-                //       <input
-                //         type="date"
-                //         className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                //         onChange={(e) => {
-                //           let temp = data.childDobs;
-                //           temp[index] = e.target.value;
-                //           setData({
-                //             ...data,
-                //             childDobs: temp,
-                //           });
-                //           console.log(data);
-                //         }}
-                //         value={data.childDobs[index]}
-                //       />
-                //     </div>
-                //   </>
-                // ))
                 [...Array(data.noOfChildren)].map((_, index) => (
                   <>
                     <div key={index + 1}>
@@ -646,15 +627,9 @@ export default function Home() {
                         type="text"
                         className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                         placeholder="John Doe"
-                        onChange={(e) => {
-                          let temp = data.childNames;
-                          temp[index] = e.target.value;
-                          setData({
-                            ...data,
-                            childNames: temp,
-                          });
-                          console.log(data);
-                        }}
+                        onChange={(e) =>
+                          handleChildNameChange(index, e.target.value)
+                        }
                         value={data.childNames[index]}
                       />
                     </div>
@@ -668,15 +643,9 @@ export default function Home() {
                       <input
                         type="date"
                         className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                        onChange={(e) => {
-                          let temp = data.childDobs;
-                          temp[index] = e.target.value;
-                          setData({
-                            ...data,
-                            childDobs: temp,
-                          });
-                          console.log(data);
-                        }}
+                        onChange={(e) =>
+                          handleChildDOBChange(index, e.target.value)
+                        }
                         value={data.childDobs[index]}
                       />
                     </div>
@@ -808,7 +777,7 @@ export default function Home() {
                   name="employerStreetNo"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  placeholder="2"
+                  placeholder="#"
                   value={data.employerStreetNo}
                 />
               </div>
@@ -825,7 +794,7 @@ export default function Home() {
                   name="employerSuiteNo"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  placeholder="2"
+                  placeholder="#"
                   value={data.employerSuiteNo}
                 />
               </div>
@@ -842,7 +811,7 @@ export default function Home() {
                   name="employerPostalCode"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  placeholder="54000"
+                  placeholder="A4G K0J"
                   value={data.employerPostalCode}
                 />
               </div>
@@ -926,25 +895,43 @@ export default function Home() {
               </div>
 
               {data.drinkingStatus === "Drinker" && (
-                <div>
-                  <label
-                    htmlFor="drinkType"
-                    className="block mb-2 text-sm font-medium"
-                  >
-                    Drink Type
-                  </label>
-                  <select
-                    id="drinkType"
-                    name="drinkType"
-                    className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                    onChange={handleChange}
-                    value={data.drinkType}
-                  >
-                    <option value="Beer">Beer</option>
-                    <option value="Wine">Wine</option>
-                    <option value="Hard-Liquor">Hard liquor</option>
-                  </select>
-                </div>
+                <>
+                  <div>
+                    <label
+                      htmlFor="drinkType"
+                      className="block mb-2 text-sm font-medium"
+                    >
+                      Drink Type
+                    </label>
+                    <select
+                      id="drinkType"
+                      name="drinkType"
+                      className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                      onChange={handleChange}
+                      value={data.drinkType}
+                    >
+                      <option value="Beer">Beer</option>
+                      <option value="Wine">Wine</option>
+                      <option value="Hard-Liquor">Hard liquor</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="drinksPerDay"
+                      className="block mb-2 text-sm font-medium"
+                    >
+                      Per Day Glasses
+                    </label>
+                    <input
+                      type="text"
+                      id="drinksPerDay"
+                      name="drinksPerDay"
+                      className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                      onChange={handleChange}
+                      value={data.drinksPerDay}
+                    />
+                  </div>
+                </>
               )}
               <div>
                 <label
@@ -1115,7 +1102,7 @@ export default function Home() {
                   name="clinicStreetNo"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  placeholder="123"
+                  placeholder="#"
                   value={data.clinicStreetNo}
                 />
               </div>
@@ -1131,8 +1118,8 @@ export default function Home() {
                   id="clinicSuiteNo"
                   name="clinicSuiteNo"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
+                  placeholder="#"
                   onChange={handleChange}
-                  placeholder="2"
                   value={data.clinicSuiteNo}
                 />
               </div>
@@ -1144,12 +1131,12 @@ export default function Home() {
                   Clinic Postal Code
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   id="clinicPostalCode"
                   name="clinicPostalCode"
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
-                  placeholder="54000"
+                  placeholder="A4C G7L"
                   value={data.clinicPostalCode}
                 />
               </div>
@@ -1357,7 +1344,7 @@ export default function Home() {
               <div></div>
               <div className="flex items-end justify-center gap-8">
                 <button
-                  onClick={submit}
+                  // onClick={submit}
                   type="submit"
                   className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all bg-indigo-500 border border-transparent rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                 >
@@ -1367,51 +1354,7 @@ export default function Home() {
                   type="reset"
                   className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all bg-red-500 border border-transparent rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                   onClick={() => {
-                    setData({
-                      name: "",
-                      dob: "",
-                      email: "",
-                      phone: "",
-                      address: "",
-                      statusInCanada: "Citizen",
-                      arrivalDate: "",
-                      height: "",
-                      weight: "",
-                      yearsInCanada: "",
-                      birthCountry: "",
-                      maritalStatus: "Single",
-                      spouseName: "",
-                      spouseDob: "",
-                      workStatus: "Employed",
-                      occupation: "",
-                      jobResponsibilities: "",
-                      employerName: "",
-                      employerAddress: "",
-                      annualIncome: "",
-                      smokingStatus: "Non-Smoker",
-                      drinkingStatus: "Non-Drinker",
-                      drinkType: "",
-                      anyMedication: "No",
-                      whichMedication: "",
-                      familyDoctor: "",
-                      clinicAddress: "",
-                      doctorLastVisit: "",
-                      reasonForLastVisit: "",
-                      anyFamilyHistory: "",
-                      anyHealthIssues: "",
-                      dangerousSports: "",
-                      replacingOldPolicy: "",
-                      anyLicenceSuspension: "",
-                      faceAmount: "",
-                      beneficiary1: "",
-                      beneficiary2: "",
-                      assets: "",
-                      liabilities: "",
-                      bankNumber: "",
-                      transitNumber: "",
-                      accountNumber: "",
-                      signature: "",
-                    });
+                    // setData(initialData);
                   }}
                 >
                   Reset
