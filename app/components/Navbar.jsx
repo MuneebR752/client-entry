@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -6,9 +7,15 @@ const Navbar = () => {
   const pathname = usePathname();
   return (
     <header className="z-50 flex flex-wrap w-full py-4 bg-gray-800">
-      <nav className="max-w-[85rem] w-full mx-auto px-4" aria-label="Global">
+      <nav className="container w-[85%] px-4 mx-auto" aria-label="Global">
         <a className="flex-none text-2xl font-semibold text-white" href="#">
-          Swift Services
+          <Image
+            className="rounded-full"
+            src={"/logo.png"}
+            width={70}
+            height={70}
+            alt={"logo"}
+          />
         </a>
         <div className="flex flex-row items-center justify-center gap-5 mt-5 text-lg">
           <Link

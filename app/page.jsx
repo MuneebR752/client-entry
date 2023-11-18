@@ -122,7 +122,7 @@ export default function Home() {
             smokingStatus: "Non-Smoker",
             drinkingStatus: "Non-Drinker",
             drinkType: "",
-    drinksPerDay: "",
+            drinksPerDay: "",
             anyMedication: "No",
             whichMedication: "",
             clinicAddress: "",
@@ -182,9 +182,9 @@ export default function Home() {
 
   return (
     <main>
-      <section className="h-[calc(100vh-3.5rem)] bg-[#1f2937] flex justify-center items-center text-white">
-        <section className="container flex flex-col w-full h-full gap-8 mx-4 my-6 sm:flex-row">
-          <div className="sm:w-[70%] w-full overflow-y-scroll no-scrollbar">
+      <section className="bg-[#1f2937] flex justify-center items-center text-white">
+        <section className="container flex flex-col w-full h-full gap-8 mx-4 my-6">
+          <div className="container w-[85%] mx-auto no-scrollbar">
             <form
               onSubmit={submit}
               className="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2"
@@ -1362,7 +1362,7 @@ export default function Home() {
               </div>
             </form>
           </div>
-          <div className="sm:max-w-[30%] w-full overflow-y-scroll no-scrollbar">
+          {/* <div className="sm:max-w-[30%] w-full overflow-y-scroll no-scrollbar">
             <div className="flex flex-col justify-center w-full gap-4 my-4">
               <h4 className="my-6 text-lg font-medium">Preview</h4>
               <div className="flex w-full gap-4">
@@ -1511,7 +1511,7 @@ export default function Home() {
                 <p>{data.signature}</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
       </section>
     </main>

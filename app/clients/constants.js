@@ -21,6 +21,7 @@ const columns = [
   "No of Male Children",
   "No of Female Children",
   "No of Infants",
+  
   "Work Status",
   "Occupation",
   "Job Responsibilities",
@@ -34,6 +35,7 @@ const columns = [
   "Smoking Status",
   "Drinking Status",
   "Drink Type",
+  "Drink Frequency",
   "Any Medication",
   "Which Medication",
   "Family Doctor",

@@ -59,7 +59,7 @@ const page = () => {
   return (
     <main>
       <section className="bg-[#1f2937] w-full min-h-screen">
-        <div className="flex flex-col">
+        <div className="container flex flex-col w-[85%] mx-auto">
           <div className="overflow-x-auto no-scrollbar">
             <div className="p-1.5 min-w-full inline-block align-middle">
               <div className="border border-gray-700 divide-y divide-gray-700 rounded-lg">
