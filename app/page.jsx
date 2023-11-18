@@ -24,8 +24,7 @@ export default function Home() {
     noOfMaleChildren: "",
     noOfFemaleChildren: "",
     noOfInfantChildren: "",
-    childNames: [],
-    childDobs: [],
+    children: [],
     workStatus: "Employed",
     occupation: "",
     jobResponsibilities: "",
@@ -106,8 +105,7 @@ export default function Home() {
             noOfMaleChildren: "",
             noOfFemaleChildren: "",
             noOfInfantChildren: "",
-            childNames: [],
-            childDobs: [],
+            children: [],
             workStatus: "Employed",
             occupation: "",
             jobResponsibilities: "",
@@ -156,30 +154,11 @@ export default function Home() {
     }
     return;
   };
-  const handleChildNameChange = (index, value) => {
-    setData((prevData) => {
-      const updatedChildNames = [...prevData.childNames];
-      updatedChildNames[index] = value;
-
-      return {
-        ...prevData,
-        childNames: updatedChildNames,
-      };
-    });
+  const handleChildren = (e, i) => {
+    let temp = [...data.children];
+    temp[i][e.target.name] = e.target.value;
+    setData({ ...data, children: temp });
   };
-
-  const handleChildDOBChange = (index, value) => {
-    setData((prevData) => {
-      const updatedChildDobs = [...prevData.childDobs];
-      updatedChildDobs[index] = value;
-
-      return {
-        ...prevData,
-        childDobs: updatedChildDobs,
-      };
-    });
-  };
-
   return (
     <main>
       <section className="bg-[#1f2937] flex justify-center items-center text-white">
@@ -543,13 +522,15 @@ export default function Home() {
                       onChange={(e) => {
                         let temp = [];
                         for (let i = 0; i < parseInt(e.target.value); i++) {
-                          temp.push("");
+                          temp.push({
+                            name: "",
+                            dob: "",
+                          });
                         }
                         setData({
                           ...data,
                           noOfChildren: parseInt(e.target.value),
-                          childNames: temp,
-                          childDobs: temp,
+                          children: temp,
                         });
                       }}
                       placeholder="3"
@@ -625,12 +606,11 @@ export default function Home() {
                       </label>
                       <input
                         type="text"
+                        name="name"
                         className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                         placeholder="John Doe"
-                        onChange={(e) =>
-                          handleChildNameChange(index, e.target.value)
-                        }
-                        value={data.childNames[index]}
+                        onChange={(e) => handleChildren(e, index)}
+                        value={data.children[index].name}
                       />
                     </div>
                     <div>
@@ -642,11 +622,10 @@ export default function Home() {
                       </label>
                       <input
                         type="date"
+                        name="dob"
                         className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
-                        onChange={(e) =>
-                          handleChildDOBChange(index, e.target.value)
-                        }
-                        value={data.childDobs[index]}
+                        onChange={(e) => handleChildren(e, index)}
+                        value={data.children[index].dob}
                       />
                     </div>
                   </>

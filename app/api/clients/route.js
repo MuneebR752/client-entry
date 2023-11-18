@@ -4,8 +4,21 @@ const prisma = new PrismaClient();
 export async function POST(request) {
   try {
     const client = await request.json();
+
+    const { children, ...clientData } = client;
+
     const newClient = await prisma.client.create({
-      data: client,
+      data: {
+        ...clientData,
+        children: {
+          createMany: {
+            data: children.map((child) => ({
+              name: child.name,
+              dob: child.dob,
+            })),
+          },
+        },
+      },
     });
 
     return Response.json({ newClient, message: "Client created successfully" });
@@ -21,7 +34,11 @@ export async function POST(request) {
 
 export async function GET() {
   try {
-    const allClients = await prisma.client.findMany();
+    const allClients = await prisma.client.findMany({
+      include: {
+        children: true,
+      },
+    });
     return Response.json(allClients, { status: 200 });
   } catch (error) {
     return Response.json({ message: "Error getting clients" }, { status: 500 });

@@ -12,32 +12,31 @@ datasource db {
 }
 
 model Client {
-  id                   String   @id @default(uuid())
+  id                   String     @id @default(uuid())
   name                 String
   dob                  String
-  email                String   @unique
-  phone                String   @unique
+  email                String     @unique
+  phone                String     @unique
   address              String
   city                 String?
   streetNo             String
   suiteNo              String
   postalCode           String
-  statusInCanada       String   @default("Citizen")
+  statusInCanada       String     @default("Citizen")
   arrivalDate          String?
   height               String
   weight               String
   yearsInCanada        String
   birthCountry         String
-  maritalStatus        String   @default("Single")
+  maritalStatus        String     @default("Single")
   spouseName           String?
   spouseDob            String?
   noOfChildren         Int?
   noOfMaleChildren     String?
   noOfFemaleChildren   String?
   noOfInfantChildren   String?
-  childNames           String[] @default([])
-  childDobs            String[] @default([])
-  workStatus           String   @default("Employed")
+  children             Children[]
+  workStatus           String     @default("Employed")
   occupation           String
   jobResponsibilities  String
   employerName         String
@@ -47,11 +46,11 @@ model Client {
   employerSuiteNo      String
   employerPostalCode   String
   annualIncome         String
-  smokingStatus        String   @default("Non-Smoker")
-  drinkingStatus       String   @default("Non-Drinker")
+  smokingStatus        String     @default("Non-Smoker")
+  drinkingStatus       String     @default("Non-Drinker")
   drinkType            String?
   drinksPerDay         String?
-  anyMedication        String   @default("No")
+  anyMedication        String     @default("No")
   whichMedication      String?
   familyDoctor         String
   clinicAddress        String
@@ -75,5 +74,13 @@ model Client {
   transitNumber        String
   accountNumber        String
   signature            String
-  createdAt            DateTime @default(now())
+  createdAt            DateTime   @default(now())
+}
+
+model Children {
+  id       String @id @default(uuid())
+  name     String
+  dob      String
+  clientId String
+  client   Client @relation(fields: [clientId], references: [id])
 }
