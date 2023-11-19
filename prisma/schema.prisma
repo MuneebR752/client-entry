@@ -84,3 +84,11 @@ model Children {
   clientId String
   client   Client @relation(fields: [clientId], references: [id])
 }
+
+model User {
+  id        String   @id @default(uuid())
+  name      String   
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
