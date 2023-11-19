@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-export default function Home() {
+export default function InformationForm() {
   const [data, setData] = React.useState({
     name: "",
     dob: "",
@@ -173,7 +173,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="name"
+                  htmlhtmlFor="name"
                   className="block mb-2 text-sm font-medium"
                 >
                   Name
@@ -189,7 +189,10 @@ export default function Home() {
                 />
               </div>
               <div>
-                <label htmlFor="dob" className="block mb-2 text-sm font-medium">
+                <label
+                  htmlhtmlFor="dob"
+                  className="block mb-2 text-sm font-medium"
+                >
                   Date of Birth
                 </label>
                 <input
@@ -203,7 +206,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="email"
+                  htmlhtmlFor="email"
                   className="block mb-2 text-sm font-medium"
                 >
                   Email
@@ -220,7 +223,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="phone"
+                  htmlhtmlFor="phone"
                   className="block mb-2 text-sm font-medium"
                 >
                   Cell Number
@@ -240,7 +243,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="address"
+                  htmlhtmlFor="address"
                   className="block mb-2 text-sm font-medium"
                 >
                   Address
@@ -257,7 +260,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="city"
+                  htmlhtmlFor="city"
                   className="block mb-2 text-sm font-medium"
                 >
                   City
@@ -274,7 +277,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="streetNo"
+                  htmlhtmlFor="streetNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Street #
@@ -291,7 +294,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="suiteNo"
+                  htmlhtmlFor="suiteNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Unit / Suite #
@@ -308,7 +311,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="postalCode"
+                  htmlhtmlFor="postalCode"
                   className="block mb-2 text-sm font-medium"
                 >
                   Postal Code
@@ -329,7 +332,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="statusInCanada"
+                  htmlhtmlFor="statusInCanada"
                   className="block mb-2 text-sm font-medium"
                 >
                   Status in Canada
@@ -354,7 +357,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="arrivalDate"
+                  htmlhtmlFor="arrivalDate"
                   className="block mb-2 text-sm font-medium"
                 >
                   Arrival Date (If Permanent Residence)
@@ -370,7 +373,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="yearsInCanada"
+                  htmlhtmlFor="yearsInCanada"
                   className="block mb-2 text-sm font-medium"
                 >
                   No of Years in Canada
@@ -387,7 +390,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="birthCountry"
+                  htmlhtmlFor="birthCountry"
                   className="block mb-2 text-sm font-medium"
                 >
                   Birth Country
@@ -408,7 +411,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="height"
+                  htmlhtmlFor="height"
                   className="block mb-2 text-sm font-medium"
                 >
                   Height (in feet)
@@ -425,7 +428,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="weight"
+                  htmlhtmlFor="weight"
                   className="block mb-2 text-sm font-medium"
                 >
                   Weight (in kg)
@@ -446,7 +449,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="maritalStatus"
+                  htmlhtmlFor="maritalStatus"
                   className="block mb-2 text-sm font-medium"
                 >
                   Marital Status
@@ -472,7 +475,7 @@ export default function Home() {
                   </h3>
                   <div>
                     <label
-                      htmlFor="spouseName"
+                      htmlhtmlFor="spouseName"
                       className="block mb-2 text-sm font-medium"
                     >
                       Spouse Name
@@ -489,7 +492,7 @@ export default function Home() {
                   </div>
                   <div>
                     <label
-                      htmlFor="spouseDob"
+                      htmlhtmlFor="spouseDob"
                       className="block mb-2 text-sm font-medium"
                     >
                       Spouse Date of Birth
@@ -509,7 +512,7 @@ export default function Home() {
                   </h3>
                   <div>
                     <label
-                      htmlFor="noOfChildren"
+                      htmlhtmlFor="noOfChildren"
                       className="block mb-2 text-sm font-medium"
                     >
                       No Of Children
@@ -543,7 +546,7 @@ export default function Home() {
                 <>
                   <div>
                     <label
-                      htmlFor="noOfMaleChildren"
+                      htmlhtmlFor="noOfMaleChildren"
                       className="block mb-2 text-sm font-medium"
                     >
                       No Of Male Children
@@ -560,7 +563,7 @@ export default function Home() {
                   </div>
                   <div>
                     <label
-                      htmlFor="noOfFemaleChildren"
+                      htmlhtmlFor="noOfFemaleChildren"
                       className="block mb-2 text-sm font-medium"
                     >
                       No Of Female Children
@@ -577,7 +580,7 @@ export default function Home() {
                   </div>
                   <div>
                     <label
-                      htmlFor="noOfInfantChildren"
+                      htmlhtmlFor="noOfInfantChildren"
                       className="block mb-2 text-sm font-medium"
                     >
                       No Of Infants
@@ -599,7 +602,7 @@ export default function Home() {
                   <>
                     <div key={index + 1}>
                       <label
-                        htmlFor="noOfInfantChildren"
+                        htmlhtmlFor="noOfInfantChildren"
                         className="block mb-2 text-sm font-medium"
                       >
                         Child #{index + 1} Name
@@ -615,7 +618,7 @@ export default function Home() {
                     </div>
                     <div>
                       <label
-                        htmlFor="noOfInfantChildren"
+                        htmlhtmlFor="noOfInfantChildren"
                         className="block mb-2 text-sm font-medium"
                       >
                         Child #{index + 1} Date of Birth
@@ -636,7 +639,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="workStatus"
+                  htmlhtmlFor="workStatus"
                   className="block mb-2 text-sm font-medium"
                 >
                   Work Status
@@ -656,7 +659,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="occupation"
+                  htmlhtmlFor="occupation"
                   className="block mb-2 text-sm font-medium"
                 >
                   Occupation
@@ -673,7 +676,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="jobResponsibilities"
+                  htmlhtmlFor="jobResponsibilities"
                   className="block mb-2 text-sm font-medium"
                 >
                   Job Responsibilities
@@ -690,7 +693,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="employerName"
+                  htmlhtmlFor="employerName"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer Name
@@ -711,7 +714,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="employerAddress"
+                  htmlhtmlFor="employerAddress"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer's Address
@@ -728,7 +731,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="employerCity"
+                  htmlhtmlFor="employerCity"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer City
@@ -745,7 +748,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="employerStreetNo"
+                  htmlhtmlFor="employerStreetNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer Street #
@@ -762,7 +765,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="employerSuiteNo"
+                  htmlhtmlFor="employerSuiteNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer Suite #
@@ -779,7 +782,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="employerPostalCode"
+                  htmlhtmlFor="employerPostalCode"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer Postal Code
@@ -796,7 +799,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="annualIncome"
+                  htmlhtmlFor="annualIncome"
                   className="block mb-2 text-sm font-medium"
                 >
                   Annual Income (in CAD)
@@ -817,7 +820,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="familyDoctor"
+                  htmlhtmlFor="familyDoctor"
                   className="block mb-2 text-sm font-medium"
                 >
                   Family Doctor
@@ -834,7 +837,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="smokingStatus"
+                  htmlhtmlFor="smokingStatus"
                   className="block mb-2 text-sm font-medium"
                 >
                   Smoking Status
@@ -854,7 +857,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="drinkingStatus"
+                  htmlhtmlFor="drinkingStatus"
                   className="block mb-2 text-sm font-medium"
                 >
                   Drinking Status
@@ -877,7 +880,7 @@ export default function Home() {
                 <>
                   <div>
                     <label
-                      htmlFor="drinkType"
+                      htmlhtmlFor="drinkType"
                       className="block mb-2 text-sm font-medium"
                     >
                       Drink Type
@@ -896,7 +899,7 @@ export default function Home() {
                   </div>
                   <div>
                     <label
-                      htmlFor="drinksPerDay"
+                      htmlhtmlFor="drinksPerDay"
                       className="block mb-2 text-sm font-medium"
                     >
                       Per Day Glasses
@@ -914,7 +917,7 @@ export default function Home() {
               )}
               <div>
                 <label
-                  htmlFor="anyMedication"
+                  htmlhtmlFor="anyMedication"
                   className="block mb-2 text-sm font-medium"
                 >
                   Any Medication
@@ -935,7 +938,7 @@ export default function Home() {
               {data.anyMedication === "Yes" && (
                 <div>
                   <label
-                    htmlFor="whichMedication"
+                    htmlhtmlFor="whichMedication"
                     className="block mb-2 text-sm font-medium"
                   >
                     Which Medication
@@ -952,7 +955,7 @@ export default function Home() {
               )}
               <div>
                 <label
-                  htmlFor="doctorLastVisit"
+                  htmlhtmlFor="doctorLastVisit"
                   className="block mb-2 text-sm font-medium"
                 >
                   Doctor's Last Visit
@@ -968,7 +971,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="reasonForLastVisit"
+                  htmlhtmlFor="reasonForLastVisit"
                   className="block mb-2 text-sm font-medium"
                 >
                   Reason For Last Visit
@@ -984,7 +987,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="anyFamilyHistory"
+                  htmlhtmlFor="anyFamilyHistory"
                   className="block mb-2 text-sm font-medium"
                 >
                   Any Family History
@@ -1001,7 +1004,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="anyHealthIssues"
+                  htmlhtmlFor="anyHealthIssues"
                   className="block mb-2 text-sm font-medium"
                 >
                   Any Health Issues
@@ -1018,7 +1021,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="dangerousSports"
+                  htmlhtmlFor="dangerousSports"
                   className="block mb-2 text-sm font-medium"
                 >
                   Dangerous Sports
@@ -1036,7 +1039,7 @@ export default function Home() {
               <h3 className="my-4 font-medium sm:col-span-2">Clinic Address</h3>
               <div>
                 <label
-                  htmlFor="clinicAddress"
+                  htmlhtmlFor="clinicAddress"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic Address
@@ -1053,7 +1056,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="clinicCity"
+                  htmlhtmlFor="clinicCity"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic City
@@ -1070,7 +1073,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="clinicStreetNo"
+                  htmlhtmlFor="clinicStreetNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic Street #
@@ -1087,7 +1090,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="clinicSuiteNo"
+                  htmlhtmlFor="clinicSuiteNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic Suite #
@@ -1104,7 +1107,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="clinicPostalCode"
+                  htmlhtmlFor="clinicPostalCode"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic Postal Code
@@ -1126,7 +1129,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="replacingOldPolicy"
+                  htmlhtmlFor="replacingOldPolicy"
                   className="block mb-2 text-sm font-medium"
                 >
                   Replacing Old Policy
@@ -1144,7 +1147,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="anyLicenceSuspension"
+                  htmlhtmlFor="anyLicenceSuspension"
                   className="block mb-2 text-sm font-medium"
                 >
                   Any Licence Suspension
@@ -1163,7 +1166,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="faceAmount"
+                  htmlhtmlFor="faceAmount"
                   className="block mb-2 text-sm font-medium"
                 >
                   Face Amount ($)
@@ -1180,7 +1183,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="beneficiary1"
+                  htmlhtmlFor="beneficiary1"
                   className="block mb-2 text-sm font-medium"
                 >
                   Beneficiary 1
@@ -1197,7 +1200,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="beneficiary2"
+                  htmlhtmlFor="beneficiary2"
                   className="block mb-2 text-sm font-medium"
                 >
                   Beneficiary 2
@@ -1218,7 +1221,7 @@ export default function Home() {
               </h3>
               <div>
                 <label
-                  htmlFor="assets"
+                  htmlhtmlFor="assets"
                   className="block mb-2 text-sm font-medium"
                 >
                   Assets
@@ -1235,7 +1238,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="liabilities"
+                  htmlhtmlFor="liabilities"
                   className="block mb-2 text-sm font-medium"
                 >
                   Liabilities
@@ -1252,7 +1255,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="bankNumber"
+                  htmlhtmlFor="bankNumber"
                   className="block mb-2 text-sm font-medium"
                 >
                   Bank #
@@ -1269,7 +1272,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="transitNumber"
+                  htmlhtmlFor="transitNumber"
                   className="block mb-2 text-sm font-medium"
                 >
                   Transit #
@@ -1286,7 +1289,7 @@ export default function Home() {
               </div>
               <div>
                 <label
-                  htmlFor="accountNumber"
+                  htmlhtmlFor="accountNumber"
                   className="block mb-2 text-sm font-medium"
                 >
                   Account #
@@ -1304,7 +1307,7 @@ export default function Home() {
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
               <div>
                 <label
-                  htmlFor="signature"
+                  htmlhtmlFor="signature"
                   className="block mb-2 text-sm font-medium"
                 >
                   Signature

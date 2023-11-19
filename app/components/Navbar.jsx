@@ -27,17 +27,17 @@ const Navbar = () => {
             href={"/"}
             aria-current="page"
           >
-            Add New Client
+            Information Form
           </Link>
           <Link
             className={
-              pathname === "/clients"
+              pathname === "/instructions"
                 ? "font-medium text-blue-500 hover:text-blue-600"
                 : "font-medium text-gray-400 hover:text-gray-500"
             }
-            href={"/clients"}
+            href={"/instructions"}
           >
-            View Clients
+            Instructions/Guidlines
           </Link>
         </div>
       </nav>
