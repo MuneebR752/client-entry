@@ -173,7 +173,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="name"
+                  htmlFor="name"
                   className="block mb-2 text-sm font-medium"
                 >
                   Name
@@ -189,10 +189,7 @@ export default function InformationForm() {
                 />
               </div>
               <div>
-                <label
-                  htmlhtmlFor="dob"
-                  className="block mb-2 text-sm font-medium"
-                >
+                <label htmlFor="dob" className="block mb-2 text-sm font-medium">
                   Date of Birth
                 </label>
                 <input
@@ -206,7 +203,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="email"
+                  htmlFor="email"
                   className="block mb-2 text-sm font-medium"
                 >
                   Email
@@ -223,7 +220,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="phone"
+                  htmlFor="phone"
                   className="block mb-2 text-sm font-medium"
                 >
                   Cell Number
@@ -243,7 +240,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="address"
+                  htmlFor="address"
                   className="block mb-2 text-sm font-medium"
                 >
                   Address
@@ -260,7 +257,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="city"
+                  htmlFor="city"
                   className="block mb-2 text-sm font-medium"
                 >
                   City
@@ -277,7 +274,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="streetNo"
+                  htmlFor="streetNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Street #
@@ -294,7 +291,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="suiteNo"
+                  htmlFor="suiteNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Unit / Suite #
@@ -311,7 +308,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="postalCode"
+                  htmlFor="postalCode"
                   className="block mb-2 text-sm font-medium"
                 >
                   Postal Code
@@ -332,7 +329,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="statusInCanada"
+                  htmlFor="statusInCanada"
                   className="block mb-2 text-sm font-medium"
                 >
                   Status in Canada
@@ -357,7 +354,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="arrivalDate"
+                  htmlFor="arrivalDate"
                   className="block mb-2 text-sm font-medium"
                 >
                   Arrival Date (If Permanent Residence)
@@ -373,7 +370,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="yearsInCanada"
+                  htmlFor="yearsInCanada"
                   className="block mb-2 text-sm font-medium"
                 >
                   No of Years in Canada
@@ -390,7 +387,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="birthCountry"
+                  htmlFor="birthCountry"
                   className="block mb-2 text-sm font-medium"
                 >
                   Birth Country
@@ -411,7 +408,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="height"
+                  htmlFor="height"
                   className="block mb-2 text-sm font-medium"
                 >
                   Height (in feet)
@@ -428,7 +425,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="weight"
+                  htmlFor="weight"
                   className="block mb-2 text-sm font-medium"
                 >
                   Weight (in kg)
@@ -449,7 +446,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="maritalStatus"
+                  htmlFor="maritalStatus"
                   className="block mb-2 text-sm font-medium"
                 >
                   Marital Status
@@ -475,7 +472,7 @@ export default function InformationForm() {
                   </h3>
                   <div>
                     <label
-                      htmlhtmlFor="spouseName"
+                      htmlFor="spouseName"
                       className="block mb-2 text-sm font-medium"
                     >
                       Spouse Name
@@ -492,7 +489,7 @@ export default function InformationForm() {
                   </div>
                   <div>
                     <label
-                      htmlhtmlFor="spouseDob"
+                      htmlFor="spouseDob"
                       className="block mb-2 text-sm font-medium"
                     >
                       Spouse Date of Birth
@@ -512,7 +509,7 @@ export default function InformationForm() {
                   </h3>
                   <div>
                     <label
-                      htmlhtmlFor="noOfChildren"
+                      htmlFor="noOfChildren"
                       className="block mb-2 text-sm font-medium"
                     >
                       No Of Children
@@ -546,7 +543,7 @@ export default function InformationForm() {
                 <>
                   <div>
                     <label
-                      htmlhtmlFor="noOfMaleChildren"
+                      htmlFor="noOfMaleChildren"
                       className="block mb-2 text-sm font-medium"
                     >
                       No Of Male Children
@@ -563,7 +560,7 @@ export default function InformationForm() {
                   </div>
                   <div>
                     <label
-                      htmlhtmlFor="noOfFemaleChildren"
+                      htmlFor="noOfFemaleChildren"
                       className="block mb-2 text-sm font-medium"
                     >
                       No Of Female Children
@@ -580,7 +577,7 @@ export default function InformationForm() {
                   </div>
                   <div>
                     <label
-                      htmlhtmlFor="noOfInfantChildren"
+                      htmlFor="noOfInfantChildren"
                       className="block mb-2 text-sm font-medium"
                     >
                       No Of Infants
@@ -602,7 +599,7 @@ export default function InformationForm() {
                   <>
                     <div key={index + 1}>
                       <label
-                        htmlhtmlFor="noOfInfantChildren"
+                        htmlFor="noOfInfantChildren"
                         className="block mb-2 text-sm font-medium"
                       >
                         Child #{index + 1} Name
@@ -618,7 +615,7 @@ export default function InformationForm() {
                     </div>
                     <div>
                       <label
-                        htmlhtmlFor="noOfInfantChildren"
+                        htmlFor="noOfInfantChildren"
                         className="block mb-2 text-sm font-medium"
                       >
                         Child #{index + 1} Date of Birth
@@ -639,7 +636,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="workStatus"
+                  htmlFor="workStatus"
                   className="block mb-2 text-sm font-medium"
                 >
                   Work Status
@@ -659,7 +656,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="occupation"
+                  htmlFor="occupation"
                   className="block mb-2 text-sm font-medium"
                 >
                   Occupation
@@ -676,7 +673,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="jobResponsibilities"
+                  htmlFor="jobResponsibilities"
                   className="block mb-2 text-sm font-medium"
                 >
                   Job Responsibilities
@@ -693,7 +690,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="employerName"
+                  htmlFor="employerName"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer Name
@@ -714,7 +711,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="employerAddress"
+                  htmlFor="employerAddress"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer's Address
@@ -731,7 +728,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="employerCity"
+                  htmlFor="employerCity"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer City
@@ -748,7 +745,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="employerStreetNo"
+                  htmlFor="employerStreetNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer Street #
@@ -765,7 +762,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="employerSuiteNo"
+                  htmlFor="employerSuiteNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer Suite #
@@ -782,7 +779,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="employerPostalCode"
+                  htmlFor="employerPostalCode"
                   className="block mb-2 text-sm font-medium"
                 >
                   Employer Postal Code
@@ -799,7 +796,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="annualIncome"
+                  htmlFor="annualIncome"
                   className="block mb-2 text-sm font-medium"
                 >
                   Annual Income (in CAD)
@@ -820,7 +817,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="familyDoctor"
+                  htmlFor="familyDoctor"
                   className="block mb-2 text-sm font-medium"
                 >
                   Family Doctor
@@ -837,7 +834,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="smokingStatus"
+                  htmlFor="smokingStatus"
                   className="block mb-2 text-sm font-medium"
                 >
                   Smoking Status
@@ -857,7 +854,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="drinkingStatus"
+                  htmlFor="drinkingStatus"
                   className="block mb-2 text-sm font-medium"
                 >
                   Drinking Status
@@ -880,7 +877,7 @@ export default function InformationForm() {
                 <>
                   <div>
                     <label
-                      htmlhtmlFor="drinkType"
+                      htmlFor="drinkType"
                       className="block mb-2 text-sm font-medium"
                     >
                       Drink Type
@@ -899,7 +896,7 @@ export default function InformationForm() {
                   </div>
                   <div>
                     <label
-                      htmlhtmlFor="drinksPerDay"
+                      htmlFor="drinksPerDay"
                       className="block mb-2 text-sm font-medium"
                     >
                       Per Day Glasses
@@ -917,7 +914,7 @@ export default function InformationForm() {
               )}
               <div>
                 <label
-                  htmlhtmlFor="anyMedication"
+                  htmlFor="anyMedication"
                   className="block mb-2 text-sm font-medium"
                 >
                   Any Medication
@@ -938,7 +935,7 @@ export default function InformationForm() {
               {data.anyMedication === "Yes" && (
                 <div>
                   <label
-                    htmlhtmlFor="whichMedication"
+                    htmlFor="whichMedication"
                     className="block mb-2 text-sm font-medium"
                   >
                     Which Medication
@@ -955,7 +952,7 @@ export default function InformationForm() {
               )}
               <div>
                 <label
-                  htmlhtmlFor="doctorLastVisit"
+                  htmlFor="doctorLastVisit"
                   className="block mb-2 text-sm font-medium"
                 >
                   Doctor's Last Visit
@@ -971,7 +968,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="reasonForLastVisit"
+                  htmlFor="reasonForLastVisit"
                   className="block mb-2 text-sm font-medium"
                 >
                   Reason For Last Visit
@@ -987,7 +984,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="anyFamilyHistory"
+                  htmlFor="anyFamilyHistory"
                   className="block mb-2 text-sm font-medium"
                 >
                   Any Family History
@@ -1004,7 +1001,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="anyHealthIssues"
+                  htmlFor="anyHealthIssues"
                   className="block mb-2 text-sm font-medium"
                 >
                   Any Health Issues
@@ -1021,7 +1018,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="dangerousSports"
+                  htmlFor="dangerousSports"
                   className="block mb-2 text-sm font-medium"
                 >
                   Dangerous Sports
@@ -1039,7 +1036,7 @@ export default function InformationForm() {
               <h3 className="my-4 font-medium sm:col-span-2">Clinic Address</h3>
               <div>
                 <label
-                  htmlhtmlFor="clinicAddress"
+                  htmlFor="clinicAddress"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic Address
@@ -1056,7 +1053,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="clinicCity"
+                  htmlFor="clinicCity"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic City
@@ -1073,7 +1070,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="clinicStreetNo"
+                  htmlFor="clinicStreetNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic Street #
@@ -1090,7 +1087,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="clinicSuiteNo"
+                  htmlFor="clinicSuiteNo"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic Suite #
@@ -1107,7 +1104,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="clinicPostalCode"
+                  htmlFor="clinicPostalCode"
                   className="block mb-2 text-sm font-medium"
                 >
                   Clinic Postal Code
@@ -1129,7 +1126,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="replacingOldPolicy"
+                  htmlFor="replacingOldPolicy"
                   className="block mb-2 text-sm font-medium"
                 >
                   Replacing Old Policy
@@ -1147,7 +1144,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="anyLicenceSuspension"
+                  htmlFor="anyLicenceSuspension"
                   className="block mb-2 text-sm font-medium"
                 >
                   Any Licence Suspension
@@ -1166,7 +1163,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="faceAmount"
+                  htmlFor="faceAmount"
                   className="block mb-2 text-sm font-medium"
                 >
                   Face Amount ($)
@@ -1183,7 +1180,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="beneficiary1"
+                  htmlFor="beneficiary1"
                   className="block mb-2 text-sm font-medium"
                 >
                   Beneficiary 1
@@ -1200,7 +1197,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="beneficiary2"
+                  htmlFor="beneficiary2"
                   className="block mb-2 text-sm font-medium"
                 >
                   Beneficiary 2
@@ -1221,7 +1218,7 @@ export default function InformationForm() {
               </h3>
               <div>
                 <label
-                  htmlhtmlFor="assets"
+                  htmlFor="assets"
                   className="block mb-2 text-sm font-medium"
                 >
                   Assets
@@ -1238,7 +1235,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="liabilities"
+                  htmlFor="liabilities"
                   className="block mb-2 text-sm font-medium"
                 >
                   Liabilities
@@ -1255,7 +1252,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="bankNumber"
+                  htmlFor="bankNumber"
                   className="block mb-2 text-sm font-medium"
                 >
                   Bank #
@@ -1272,7 +1269,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="transitNumber"
+                  htmlFor="transitNumber"
                   className="block mb-2 text-sm font-medium"
                 >
                   Transit #
@@ -1289,7 +1286,7 @@ export default function InformationForm() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="accountNumber"
+                  htmlFor="accountNumber"
                   className="block mb-2 text-sm font-medium"
                 >
                   Account #
@@ -1307,7 +1304,7 @@ export default function InformationForm() {
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
               <div>
                 <label
-                  htmlhtmlFor="signature"
+                  htmlFor="signature"
                   className="block mb-2 text-sm font-medium"
                 >
                   Signature
