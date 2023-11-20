@@ -1,8 +1,16 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
+import { User } from "app/context/UserContext";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 const Login = () => {
   const router = useRouter();
+  const [userContext, setUserContext] = useContext(User);
+  React.useEffect(() => {
+    if (userContext.isLoggedIn) {
+      router.push("/");
+    }
+  }, [userContext]);
   const [user, setUser] = React.useState({
     email: "",
     password: "",
@@ -20,10 +28,15 @@ const Login = () => {
         body: JSON.stringify(user),
       });
       if (res.ok) {
-        router.push("/");
+        let data = await res.json();
+        setUserContext({
+          name: data.name,
+          email: data.email,
+          isLoggedIn: true,
+        });
       } else {
         setSubmitting(false);
-        alert("Incorrect email or password!");
+        alert("Invalid credentials!");
         return;
       }
     } catch (err) {
@@ -41,12 +54,12 @@ const Login = () => {
             <h1 className="block text-2xl font-bold text-white">Sign in</h1>
             <p className="mt-2 text-sm text-gray-400">
               Don't have an account yet? Contact us{" "}
-              <a
+              <Link
+                href="/contact"
                 className="font-medium text-blue-600 decoration-2 hover:underline focus:outline-none"
-                href="#"
               >
                 Here
-              </a>
+              </Link>
             </p>
           </div>
           <div className="mt-12">
