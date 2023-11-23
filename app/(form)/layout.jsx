@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <div className={`max-w-full max-h-screen`}>
+    <div className={`max-w-full min-h-screen bg-[#1f2937]`}>
       <Navbar />
       {children}
     </div>
