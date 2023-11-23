@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault();
     try {
       setSubmitting(true);
-      let res = await fetch(`${location.origin}/api/login`, {
+      let res = await fetch(`${location.origin}/api/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
