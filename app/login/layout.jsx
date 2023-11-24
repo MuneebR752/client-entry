@@ -5,10 +5,8 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <main lang="en" className="h-full">
-      <div className="flex items-center h-full py-16 bg-slate-900">
-        {children}
-      </div>
+    <main lang="en" className="h-screen">
+      <div className="flex items-center h-full bg-slate-900">{children}</div>
     </main>
   );
 }
