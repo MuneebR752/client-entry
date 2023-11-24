@@ -7,7 +7,7 @@ const UserTable = () => {
   React.useEffect(() => {
     const allClients = async () => {
       try {
-        const res = await fetch(`${location.origin}/api/clients`, {
+        const res = await fetch(`${location.origin}/api/users`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
@@ -199,10 +199,10 @@ const UserTable = () => {
                               {client.name}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.dob}
+                              {client.email}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.email}
+                              {client.password}
                             </td>
                           </tr>
                         ))}

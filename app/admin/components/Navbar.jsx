@@ -20,11 +20,11 @@ const Navbar = () => {
         <div className="flex flex-row items-center justify-center gap-5 mt-5 text-lg">
           <Link
             className={
-              pathname === "/admin/clients"
+              pathname === "/admin"
                 ? "font-medium text-blue-500 hover:text-blue-600"
                 : "font-medium text-gray-400 hover:text-gray-500"
             }
-            href={"/admin/clients"}
+            href={"/admin"}
             aria-current="page"
           >
             Clients

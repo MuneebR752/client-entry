@@ -11,7 +11,7 @@ const AddUser = () => {
     e.preventDefault();
     try {
       setSubmitting(true);
-      let res = await fetch(`${location.origin}/api/user`, {
+      let res = await fetch(`${location.origin}/api/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const AddUser = () => {
   };
 
   return (
-    <div class="md:w-[40%] bg-slate-900">
+    <div className="md:w-[40%] bg-slate-900">
       <div className="w-full p-6 mx-auto">
         <div className="bg-gray-800 border-gray-700 shadow-sm rounded-xl">
           <div className="p-4 sm:p-7">

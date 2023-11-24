@@ -48,7 +48,6 @@ export async function GET() {
 export async function DELETE(request) {
   try {
     const { id } = await request.json();
-    // const { id } = request.params;
     const deletedClient = await prisma.client.delete({
       where: { id: id },
     });
