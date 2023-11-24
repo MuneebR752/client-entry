@@ -1,15 +1,6 @@
 "use client";
-import React, { useContext } from "react";
-import { User } from "app/context/UserContext";
-import { useRouter } from "next/navigation";
+import React from "react";
 export default function InformationForm() {
-  const router = useRouter();
-  const [user] = useContext(User);
-  React.useEffect(() => {
-    if (!user.isLoggedIn) {
-      router.push("/login");
-    }
-  }, [user]);
   const [data, setData] = React.useState({
     name: "",
     dob: "",

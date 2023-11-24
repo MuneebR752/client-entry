@@ -6,6 +6,7 @@ const UserContext = ({ children }) => {
     isLoggedIn: false,
     name: "",
     email: "",
+    isAdmin: false,
   });
   return <User.Provider value={[user, setUser]}>{children}</User.Provider>;
 };

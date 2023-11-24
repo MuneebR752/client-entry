@@ -39,7 +39,7 @@ const UserTable = () => {
       if (confirm("Are you sure you want to delete?")) {
         selectedClients.map(async (id) => {
           try {
-            const res = await fetch(`${location.origin}/api/clients`, {
+            const res = await fetch(`${location.origin}/api/users`, {
               method: "DELETE",
               headers: {
                 "Content-Type": "application/json",
@@ -157,6 +157,12 @@ const UserTable = () => {
                         >
                           Password
                         </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
+                        >
+                          Role
+                        </th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -203,6 +209,9 @@ const UserTable = () => {
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.password}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              {client.isAdmin ? "Admin" : "User"}
                             </td>
                           </tr>
                         ))}

@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Login",
-  description: "Login Form for Credentials",
+  description: "Credentials for login to access the form.",
 };
 
 export default function Layout({ children }) {

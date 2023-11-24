@@ -1,3 +1,4 @@
+import AdminAuth from "./AdminAuth";
 import Navbar from "./components/Navbar";
 export const metadata = {
   title: "Admin Panel",
@@ -6,9 +7,11 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <div className={`bg-slate-900`}>
-      <Navbar />
-      {children}
-    </div>
+    <AdminAuth>
+      <div className={`bg-slate-900`}>
+        <Navbar />
+        {children}
+      </div>
+    </AdminAuth>
   );
 }

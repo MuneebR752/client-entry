@@ -5,6 +5,7 @@ const AddUser = () => {
     name: "",
     email: "",
     password: "",
+    isAdmin: false,
   });
   let [submitting, setSubmitting] = React.useState(false);
   const handleSubmit = async (e) => {
@@ -113,6 +114,44 @@ const AddUser = () => {
                           setUser({ ...user, password: e.target.value })
                         }
                       />
+                    </div>
+                  </div>
+                  <div className="flex gap-x-6 mx-4">
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        name="isAdmin"
+                        className="shrink-0 mt-0.5 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-800 border-gray-700 checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
+                        id="hs-radio-group-1"
+                        checked={user.isAdmin}
+                        onChange={(e) => {
+                          setUser({ ...user, isAdmin: true });
+                        }}
+                      />
+                      <label
+                        htmlFor="hs-radio-group-1"
+                        className="text-lg ms-2 text-gray-400"
+                      >
+                        Admin
+                      </label>
+                    </div>
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        name="isAdmin"
+                        className="shrink-0 mt-0.5 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-800 border-gray-700 checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
+                        id="hs-radio-group-2"
+                        checked={!user.isAdmin}
+                        onChange={(e) => {
+                          setUser({ ...user, isAdmin: false });
+                        }}
+                      />
+                      <label
+                        htmlFor="hs-radio-group-2"
+                        className="text-lg ms-2 text-gray-400"
+                      >
+                        User
+                      </label>
                     </div>
                   </div>
                   <button

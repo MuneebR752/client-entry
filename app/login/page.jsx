@@ -33,6 +33,7 @@ const Login = () => {
           name: data.name,
           email: data.email,
           isLoggedIn: true,
+          isAdmin: data.isAdmin,
         });
       } else {
         setSubmitting(false);

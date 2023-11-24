@@ -87,8 +87,9 @@ model Children {
 
 model User {
   id        String   @id @default(uuid())
-  name      String   
+  name      String
   email     String   @unique
   password  String
+  isAdmin   Boolean  @default(false)
   createdAt DateTime @default(now())
 }
