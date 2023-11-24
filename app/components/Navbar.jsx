@@ -6,12 +6,11 @@ import { User } from "app/context/UserContext";
 import { usePathname } from "next/navigation";
 const Navbar = () => {
   const [user] = React.useContext(User);
-  console.log(user);
   const pathname = usePathname();
   return (
     <header className="z-50 flex flex-wrap w-full py-4 bg-gray-800">
       <nav className="container w-[85%] px-4 mx-auto" aria-label="Global">
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <a className="flex-none text-2xl font-semibold text-white" href="#">
             <Image
               className="rounded-full"
