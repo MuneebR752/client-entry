@@ -7,11 +7,11 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    // <AdminAuth>
-    <div className={`bg-slate-900`}>
-      <Navbar />
-      {children}
-    </div>
-    // </AdminAuth>
+    <AdminAuth>
+      <div className={`bg-slate-900`}>
+        <Navbar />
+        {children}
+      </div>
+    </AdminAuth>
   );
 }
