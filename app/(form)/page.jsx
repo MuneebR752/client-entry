@@ -1,7 +1,10 @@
 "use client";
 import React from "react";
+import { User } from "app/context/UserContext";
 export default function InformationForm() {
+  const [user] = React.useContext(User);
   const [data, setData] = React.useState({
+    userId: user.id,
     name: "",
     dob: "",
     email: "",
@@ -83,6 +86,7 @@ export default function InformationForm() {
         if (res.ok) {
           alert("Data Submitted Successfully!");
           setData({
+            userId: user.id,
             name: "",
             dob: "",
             email: "",

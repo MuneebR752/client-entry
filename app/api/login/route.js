@@ -3,14 +3,15 @@ const prisma = new PrismaClient();
 
 export async function POST(request) {
   const requestedUser = await request.json();
-  console.log(requestedUser);
   try {
     const user = await prisma.user.findUnique({
       where: {
         email: requestedUser.email,
       },
+      include: {
+        formData: true,
+      },
     });
-    console.log(user);
     if (!user) {
       return Response.json({ message: "User not found" }, { status: 404 });
     }

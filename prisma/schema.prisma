@@ -74,6 +74,8 @@ model Client {
   transitNumber        String
   accountNumber        String
   signature            String
+  userId               String     @unique
+  user                 User       @relation(fields: [userId], references: [id])
   createdAt            DateTime   @default(now())
 }
 
@@ -91,5 +93,6 @@ model User {
   email     String   @unique
   password  String
   isAdmin   Boolean  @default(false)
+  formData  Client?
   createdAt DateTime @default(now())
 }

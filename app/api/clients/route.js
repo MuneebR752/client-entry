@@ -5,8 +5,7 @@ export async function POST(request) {
   try {
     const client = await request.json();
 
-    const { children, ...clientData } = client;
-
+    const { children, userId, ...clientData } = client;
     const newClient = await prisma.client.create({
       data: {
         ...clientData,
@@ -16,6 +15,11 @@ export async function POST(request) {
               name: child.name,
               dob: child.dob,
             })),
+          },
+        },
+        user: {
+          connect: {
+            id: userId,
           },
         },
       },
