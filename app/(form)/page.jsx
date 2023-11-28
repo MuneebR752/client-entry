@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { User } from "app/context/UserContext";
 export default function InformationForm() {
   const [user] = React.useContext(User);
@@ -163,6 +164,20 @@ export default function InformationForm() {
     temp[i][e.target.name] = e.target.value;
     setData({ ...data, children: temp });
   };
+  console.log(user);
+  if (user.formData) {
+    return (
+      <div className="flex justify-center w-full text-center bg-[#1f2937] absolute top-1/2">
+        <div className="max-w-5xl mx-auto text-xl text-white md:text-3xl lg:text-4xl">
+          You have already submitted Your data If You wanna update it{" "}
+          <Link className="text-blue-500" href={"/"}>
+            {" "}
+            Click Here
+          </Link>
+        </div>
+      </div>
+    );
+  }
   return (
     <main>
       <section className="bg-[#1f2937] flex justify-center items-center text-white">
