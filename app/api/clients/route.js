@@ -66,3 +66,42 @@ export async function DELETE(request) {
     );
   }
 }
+
+export async function PUT(request) {
+  try {
+    const client = await request.json();
+
+    const { children, userId, ...clientData } = client;
+    const updatedClient = await prisma.client.update({
+      where: { id: client.id },
+      data: {
+        ...clientData,
+        children: {
+          createMany: {
+            data: children.map((child) => ({
+              name: child.name,
+              dob: child.dob,
+            })),
+          },
+        },
+        user: {
+          connect: {
+            id: userId,
+          },
+        },
+      },
+    });
+
+    return Response.json({
+      updatedClient,
+      message: "Client updated successfully",
+    });
+  } catch (error) {
+    console.error("Error updating a client:", error);
+
+    return Response.json(
+      { message: "Error updating a client" },
+      { status: 500 }
+    );
+  }
+}

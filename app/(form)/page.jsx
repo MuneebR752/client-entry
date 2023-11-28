@@ -164,13 +164,12 @@ export default function InformationForm() {
     temp[i][e.target.name] = e.target.value;
     setData({ ...data, children: temp });
   };
-  console.log(user);
   if (user.formData) {
     return (
       <div className="flex justify-center w-full text-center bg-[#1f2937] absolute top-1/2">
         <div className="max-w-5xl mx-auto text-xl text-white md:text-3xl lg:text-4xl">
-          You have already submitted Your data If You wanna update it{" "}
-          <Link className="text-blue-500" href={"/"}>
+          You response has already been recieved. If You wanna update it{" "}
+          <Link className="text-blue-500" href={"/updateData"}>
             {" "}
             Click Here
           </Link>
@@ -1351,7 +1350,70 @@ export default function InformationForm() {
                   type="reset"
                   className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all bg-red-500 border border-transparent rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                   onClick={() => {
-                    // setData(initialData);
+                    setData({
+                      userId: user.id,
+                      name: "",
+                      dob: "",
+                      email: "",
+                      phone: "",
+                      address: "",
+                      city: "",
+                      streetNo: "",
+                      suiteNo: "",
+                      postalCode: "",
+                      statusInCanada: "Citizen",
+                      arrivalDate: "",
+                      height: "",
+                      weight: "",
+                      yearsInCanada: "",
+                      birthCountry: "",
+                      maritalStatus: "Single",
+                      spouseName: "",
+                      spouseDob: "",
+                      noOfChildren: 0,
+                      noOfMaleChildren: "",
+                      noOfFemaleChildren: "",
+                      noOfInfantChildren: "",
+                      children: [],
+                      workStatus: "Employed",
+                      occupation: "",
+                      jobResponsibilities: "",
+                      employerName: "",
+                      employerAddress: "",
+                      employerCity: "",
+                      employerStreetNo: "",
+                      employerSuiteNo: "",
+                      employerPostalCode: "",
+                      annualIncome: "",
+                      familyDoctor: "",
+                      smokingStatus: "Non-Smoker",
+                      drinkingStatus: "Non-Drinker",
+                      drinkType: "",
+                      drinksPerDay: "",
+                      anyMedication: "No",
+                      whichMedication: "",
+                      clinicAddress: "",
+                      clinicCity: "",
+                      clinicStreetNo: "",
+                      clinicSuiteNo: "",
+                      clinicPostalCode: "",
+                      doctorLastVisit: "",
+                      reasonForLastVisit: "",
+                      anyFamilyHistory: "",
+                      anyHealthIssues: "",
+                      dangerousSports: "",
+                      replacingOldPolicy: "",
+                      anyLicenceSuspension: "",
+                      faceAmount: "",
+                      beneficiary1: "",
+                      beneficiary2: "",
+                      assets: "",
+                      liabilities: "",
+                      bankNumber: "",
+                      transitNumber: "",
+                      accountNumber: "",
+                      signature: "",
+                    });
                   }}
                 >
                   Reset
@@ -1359,156 +1421,6 @@ export default function InformationForm() {
               </div>
             </form>
           </div>
-          {/* <div className="sm:max-w-[30%] w-full overflow-y-scroll no-scrollbar">
-            <div className="flex flex-col justify-center w-full gap-4 my-4">
-              <h4 className="my-6 text-lg font-medium">Preview</h4>
-              <div className="flex w-full gap-4">
-                <p>Name : </p>
-                <p>{data.name}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Date of Birth : </p>
-                <p>{data.dob}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Email : </p>
-                <p>{data.email}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Cell Number : </p>
-                <p>{data.phone}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Address : </p>
-                <p>{data.address}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Status in Canada : </p>
-                <p>{data.statusInCanada}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Arrival Date : </p>
-                <p>{data.arrivalDate}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Height : </p>
-                <p>{data.height}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Weight : </p>
-                <p>{data.weight}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>No of Years in Canada : </p>
-                <p>{data.yearsInCanada}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Birth Country : </p>
-                <p>{data.birthCountry}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Marital Status : </p>
-                <p>{data.maritalStatus}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Work Status : </p>
-                <p>{data.workStatus}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Occupation : </p>
-                <p>{data.occupation}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Employer Name : </p>
-                <p>{data.employerName}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Employer's Address : </p>
-                <p>{data.employerAddress}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Annual Income : </p>
-                <p>{data.annualIncome}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>smoking Status : </p>
-                <p>{data.smokingStatus}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Drinking Status : </p>
-                <p>{data.drinkingStatus}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Family Doctor : </p>
-                <p>{data.familyDoctor}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Clinic Address : </p>
-                <p>{data.clinicAddress}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Doctor's Last Visit : </p>
-                <p>{data.doctorLastVisit}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Any Family History : </p>
-                <p>{data.anyFamilyHistory}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Any Health Issues : </p>
-                <p>{data.anyHealthIssues}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Dangerous Sports : </p>
-                <p>{data.dangerousSports}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Replacing Old Policy : </p>
-                <p>{data.replacingOldPolicy}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Any Licence Suspension : </p>
-                <p>{data.anyLicenceSuspension}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Face Amount : </p>
-                <p>{data.faceAmount}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Beneficiary 1 : </p>
-                <p>{data.beneficiary1}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Beneficiary 2 : </p>
-                <p>{data.beneficiary2}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Assets : </p>
-
-                <p>{data.assets}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Liabilities : </p>
-                <p>{data.liabilities}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Bank # : </p>
-                <p>{data.bankNumber}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Transit # : </p>
-                <p>{data.transitNumber}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Account # : </p>
-                <p>{data.accountNumber}</p>
-              </div>
-              <div className="flex w-full gap-4">
-                <p>Signature : </p>
-                <p>{data.signature}</p>
-              </div>
-            </div>
-          </div> */}
         </section>
       </section>
     </main>

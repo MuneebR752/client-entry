@@ -9,7 +9,11 @@ export async function POST(request) {
         email: requestedUser.email,
       },
       include: {
-        formData: true,
+        formData: {
+          include: {
+            children: true,
+          },
+        },
       },
     });
     if (!user) {
