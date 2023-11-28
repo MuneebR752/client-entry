@@ -2,6 +2,7 @@
 import React from "react";
 import { User } from "app/context/UserContext";
 import { useRouter } from "next/navigation";
+import Loading from "../admin/(clients)/components/Loading";
 const Auth = ({ children }) => {
   const router = useRouter();
   const [user] = React.useContext(User);
@@ -10,7 +11,10 @@ const Auth = ({ children }) => {
       router.push("/login");
     }
   }, [user]);
-  return children;
+  if (user.isLoggedIn) {
+    return children;
+  }
+  return <Loading />;
 };
 
 export default Auth;
