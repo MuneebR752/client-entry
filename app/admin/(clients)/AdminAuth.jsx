@@ -2,6 +2,7 @@
 import React from "react";
 import { User } from "app/context/UserContext";
 import { useRouter } from "next/navigation";
+import Loading from "./components/Loading";
 
 const AdminAuth = ({ children }) => {
   const router = useRouter();
@@ -14,6 +15,9 @@ const AdminAuth = ({ children }) => {
       router.push("/");
     }
   }, [user]);
+  if (!user.isLoggedIn) {
+    return <Loading />;
+  }
   return children;
 };
 
