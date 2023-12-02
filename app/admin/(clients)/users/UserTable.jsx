@@ -161,12 +161,6 @@ const UserTable = () => {
                           scope="col"
                           className="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
                         >
-                          Password
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
-                        >
                           Role
                         </th>
                         <th
@@ -216,9 +210,6 @@ const UserTable = () => {
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.email}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              ********
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.isAdmin ? "Admin" : "User"}
