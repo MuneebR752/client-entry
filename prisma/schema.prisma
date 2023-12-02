@@ -26,7 +26,7 @@ model Client {
   arrivalDate          String?
   height               String
   weight               String
-  yearsInCanada        String
+  yearsInCanada        String?
   birthCountry         String
   maritalStatus        String     @default("Single")
   spouseName           String?

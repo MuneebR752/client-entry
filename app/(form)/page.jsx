@@ -156,6 +156,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="John Doe"
                   value={data.name}
+                  required
                 />
               </div>
               <div>
@@ -169,6 +170,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.dob}
+                  required
                 />
               </div>
               <div>
@@ -186,6 +188,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="you@site.com"
                   value={data.email}
+                  required
                 />
               </div>
               <div>
@@ -203,6 +206,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="(123) 456-7890"
                   value={data.phone}
+                  required
                 />
               </div>
               <h3 className="my-4 font-medium sm:col-span-2">
@@ -223,6 +227,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="House #, Street #, City"
                   value={data.address}
+                  required
                 />
               </div>
               <div>
@@ -240,6 +245,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="Ottawa"
                   value={data.city}
+                  required
                 />
               </div>
               <div>
@@ -257,6 +263,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#"
                   value={data.streetNo}
+                  required
                 />
               </div>
               <div>
@@ -274,6 +281,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#"
                   value={data.suiteNo}
+                  required
                 />
               </div>
               <div>
@@ -291,6 +299,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="A4G K0J"
                   value={data.postalCode}
+                  required
                 />
               </div>
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
@@ -310,6 +319,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.statusInCanada}
+                  required
                 >
                   <option defaultValue={true} value="Citizen">
                     Citizen
@@ -370,6 +380,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="Pakistan"
                   value={data.birthCountry}
+                  required
                 />
               </div>
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
@@ -391,6 +402,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="5.6"
                   value={data.height}
+                  required
                 />
               </div>
               <div>
@@ -408,6 +420,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="65"
                   value={data.weight}
+                  required
                 />
               </div>
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
@@ -427,6 +440,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.maritalStatus}
+                  required
                 >
                   <option defaultValue={true} value="Single">
                     Single
@@ -617,6 +631,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.workStatus}
+                  required
                 >
                   <option defaultValue={true} value="Employed">
                     Employed
@@ -639,6 +654,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="Doctor"
                   value={data.occupation}
+                  required
                 />
               </div>
               <div>
@@ -656,6 +672,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="General Physician"
                   value={data.jobResponsibilities}
+                  required
                 />
               </div>
               <div>
@@ -673,6 +690,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="James Franklin"
                   value={data.employerName}
+                  required
                 />
               </div>
 
@@ -694,6 +712,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#123, Street #, City"
                   value={data.employerAddress}
+                  required
                 />
               </div>
               <div>
@@ -711,6 +730,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="Ottawa"
                   value={data.employerCity}
+                  required
                 />
               </div>
               <div>
@@ -728,6 +748,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#"
                   value={data.employerStreetNo}
+                  required
                 />
               </div>
               <div>
@@ -745,6 +766,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#"
                   value={data.employerSuiteNo}
+                  required
                 />
               </div>
               <div>
@@ -762,6 +784,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="A4G K0J"
                   value={data.employerPostalCode}
+                  required
                 />
               </div>
               <div>
@@ -779,6 +802,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="12,000"
                   value={data.annualIncome}
+                  required
                 />
               </div>
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
@@ -800,6 +824,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="Dr John Doe"
                   value={data.familyDoctor}
+                  required
                 />
               </div>
               <div>
@@ -815,6 +840,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.smokingStatus}
+                  required
                 >
                   <option value="Smoker">smoker</option>
                   <option defaultValue={true} value="Non-Smoker">
@@ -835,6 +861,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.drinkingStatus}
+                  required
                 >
                   <option value="Drinker">Drinker</option>
                   <option defaultValue={true} value="Non-Drinker">
@@ -895,6 +922,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.anyMedication}
+                  required
                 >
                   <option value="Yes">Yes</option>
                   <option defaultValue={true} value="No">
@@ -934,6 +962,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.doctorLastVisit}
+                  required
                 />
               </div>
               <div>
@@ -950,6 +979,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.reasonForLastVisit}
+                  required
                 />
               </div>
               <div>
@@ -967,6 +997,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="Diabetes"
                   value={data.anyFamilyHistory}
+                  required
                 />
               </div>
               <div>
@@ -984,6 +1015,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="Diabetes"
                   value={data.anyHealthIssues}
+                  required
                 />
               </div>
               <div>
@@ -1001,6 +1033,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="High Altitude Climbing"
                   value={data.dangerousSports}
+                  required
                 />
               </div>
               <h3 className="my-4 font-medium sm:col-span-2">Clinic Address</h3>
@@ -1019,6 +1052,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#123, Street #, City"
                   value={data.clinicAddress}
+                  required
                 />
               </div>
               <div>
@@ -1036,6 +1070,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="Ottawa"
                   value={data.clinicCity}
+                  required
                 />
               </div>
               <div>
@@ -1053,6 +1088,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#"
                   value={data.clinicStreetNo}
+                  required
                 />
               </div>
               <div>
@@ -1070,6 +1106,7 @@ export default function InformationForm() {
                   placeholder="#"
                   onChange={handleChange}
                   value={data.clinicSuiteNo}
+                  required
                 />
               </div>
               <div>
@@ -1087,6 +1124,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="A4C G7L"
                   value={data.clinicPostalCode}
+                  required
                 />
               </div>
 
@@ -1107,6 +1145,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.replacingOldPolicy}
+                  required
                 >
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
@@ -1126,6 +1165,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.anyLicenceSuspension}
+                  required
                 >
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
@@ -1146,6 +1186,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="$100,000"
                   value={data.faceAmount}
+                  required
                 />
               </div>
               <div>
@@ -1163,6 +1204,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="John doe"
                   value={data.beneficiary1}
+                  required
                 />
               </div>
               <div>
@@ -1180,6 +1222,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="John doe"
                   value={data.beneficiary2}
+                  required
                 />
               </div>
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
@@ -1201,6 +1244,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="$100,000"
                   value={data.assets}
+                  required
                 />
               </div>
               <div>
@@ -1218,6 +1262,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="$100,000"
                   value={data.liabilities}
+                  required
                 />
               </div>
               <div>
@@ -1235,6 +1280,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#123456789"
                   value={data.bankNumber}
+                  required
                 />
               </div>
               <div>
@@ -1252,6 +1298,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#123456789"
                   value={data.transitNumber}
+                  required
                 />
               </div>
               <div>
@@ -1269,6 +1316,7 @@ export default function InformationForm() {
                   onChange={handleChange}
                   placeholder="#123456789"
                   value={data.accountNumber}
+                  required
                 />
               </div>
               <hr className="w-48 h-1 mx-auto my-4 bg-gray-700 border-0 rounded sm:col-span-2 md:my-10"></hr>
@@ -1286,6 +1334,7 @@ export default function InformationForm() {
                   className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                   onChange={handleChange}
                   value={data.signature}
+                  required
                   placeholder="AA"
                 />
               </div>

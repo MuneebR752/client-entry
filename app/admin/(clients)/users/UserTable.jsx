@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { FaRegEye } from "react-icons/fa6";
 const UserTable = () => {
   const [selectedClients, setSelectedClients] = useState([]);
   const [clients, setClients] = React.useState([]);
@@ -169,6 +169,10 @@ const UserTable = () => {
                         >
                           Role
                         </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-500 uppercase whitespace-nowrap"
+                        ></th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -214,10 +218,19 @@ const UserTable = () => {
                               {client.email}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.password}
+                              ********
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.isAdmin ? "Admin" : "User"}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                              <button
+                                onClick={() => {
+                                  alert(client.password);
+                                }}
+                              >
+                                <FaRegEye />
+                              </button>
                             </td>
                           </tr>
                         ))}
