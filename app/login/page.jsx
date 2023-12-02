@@ -28,14 +28,10 @@ const Login = () => {
         body: JSON.stringify(user),
       });
       if (res.ok) {
-        let data = await res.json();
+        let userData = await res.json();
         setUserContext({
-          id: data.id,
-          name: data.name,
-          email: data.email,
+          ...userData,
           isLoggedIn: true,
-          isAdmin: data.isAdmin,
-          formData: data.formData,
         });
       } else {
         setSubmitting(false);

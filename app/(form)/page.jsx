@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { User } from "app/context/UserContext";
 export default function InformationForm() {
-  const [user] = React.useContext(User);
+  const [user, setUser] = React.useContext(User);
   const [data, setData] = React.useState({
     userId: user.id,
     name: "",
@@ -85,73 +85,25 @@ export default function InformationForm() {
           body: JSON.stringify(data),
         });
         if (res.ok) {
-          alert("Data Submitted Successfully!");
-          setData({
-            userId: user.id,
-            name: "",
-            dob: "",
-            email: "",
-            phone: "",
-            address: "",
-            city: "",
-            streetNo: "",
-            suiteNo: "",
-            postalCode: "",
-            statusInCanada: "Citizen",
-            arrivalDate: "",
-            height: "",
-            weight: "",
-            yearsInCanada: "",
-            birthCountry: "",
-            maritalStatus: "Single",
-            spouseName: "",
-            spouseDob: "",
-            noOfChildren: 0,
-            noOfMaleChildren: "",
-            noOfFemaleChildren: "",
-            noOfInfantChildren: "",
-            children: [],
-            workStatus: "Employed",
-            occupation: "",
-            jobResponsibilities: "",
-            employerName: "",
-            employerAddress: "",
-            employerCity: "",
-            employerStreetNo: "",
-            employerSuiteNo: "",
-            employerPostalCode: "",
-            annualIncome: "",
-            familyDoctor: "",
-            smokingStatus: "Non-Smoker",
-            drinkingStatus: "Non-Drinker",
-            drinkType: "",
-            drinksPerDay: "",
-            anyMedication: "No",
-            whichMedication: "",
-            clinicAddress: "",
-            clinicCity: "",
-            clinicStreetNo: "",
-            clinicSuiteNo: "",
-            clinicPostalCode: "",
-            doctorLastVisit: "",
-            reasonForLastVisit: "",
-            anyFamilyHistory: "",
-            anyHealthIssues: "",
-            dangerousSports: "",
-            replacingOldPolicy: "",
-            anyLicenceSuspension: "",
-            faceAmount: "",
-            beneficiary1: "",
-            beneficiary2: "",
-            assets: "",
-            liabilities: "",
-            bankNumber: "",
-            transitNumber: "",
-            accountNumber: "",
-            signature: "",
+          alert("Your response has been recorded!");
+          let updatedUser = await fetch(`${location.origin}/api/login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: user.email,
+              password: user.password,
+            }),
           });
+          if (updatedUser.ok) {
+            let userData = await updatedUser.json();
+            setUser({
+              ...userData,
+              isLoggedIn: true,
+            });
+          }
         }
-        return res.json();
       } catch (err) {
         alert("Something went wrong!");
         console.log(err);

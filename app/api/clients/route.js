@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 export async function POST(request) {
@@ -25,7 +26,10 @@ export async function POST(request) {
       },
     });
 
-    return Response.json({ newClient, message: "Client created successfully" });
+    return NextResponse.json({
+      newClient,
+      message: "Client created successfully",
+    });
   } catch (error) {
     console.error("Error creating a client:", error);
 
@@ -52,11 +56,20 @@ export async function GET() {
 export async function DELETE(request) {
   try {
     const { id } = await request.json();
-    const deletedClient = await prisma.client.delete({
-      where: { id: id },
+    const deletedChildren = await prisma.children.deleteMany({
+      where: { clientId: id },
     });
-
-    return Response.json({ deletedClient, message: "Client deleted" });
+    if (deletedChildren) {
+      const deletedClient = await prisma.client.delete({
+        where: { id: id },
+      });
+      return Response.json({ deletedClient, message: "Client deleted" });
+    } else {
+      return Response.json(
+        { message: "Error deleting client" },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     console.error("Error deleting a client:", error);
 

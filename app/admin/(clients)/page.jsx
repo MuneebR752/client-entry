@@ -47,6 +47,12 @@ const page = () => {
               },
               body: JSON.stringify({ id }),
             });
+            if (res.ok) {
+              const deletedClient = selectedClients.filter(
+                (clientId) => clientId !== id
+              );
+              setSelectedClients(deletedClient);
+            }
           } catch (e) {
             alert("Error: " + e.message);
           }
