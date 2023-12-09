@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { User } from "app/context/UserContext";
 export default function InformationForm() {
+  let [submitting, setSubmitting] = React.useState(false);
   const [user, setUser] = React.useContext(User);
   const [data, setData] = React.useState({
     userId: user.id,
@@ -75,6 +76,7 @@ export default function InformationForm() {
   const submit = async (e) => {
     e.preventDefault();
     let confirmation = confirm("Are you sure you want to submit?");
+    setSubmitting(true);
     if (confirmation) {
       try {
         let res = await fetch(`${location.origin}/api/clients`, {
@@ -86,6 +88,7 @@ export default function InformationForm() {
         });
         if (res.ok) {
           alert("Your response has been recorded!");
+          setSubmitting(false);
           let updatedUser = await fetch(`${location.origin}/api/login`, {
             method: "POST",
             headers: {
@@ -96,6 +99,7 @@ export default function InformationForm() {
               password: user.password,
             }),
           });
+
           if (updatedUser.ok) {
             let userData = await updatedUser.json();
             setUser({
@@ -518,7 +522,7 @@ export default function InformationForm() {
                         });
                       }}
                       placeholder="3"
-                      value={(data.noOfChildren = 0 ? "" : data.noOfChildren)}
+                      value={data.noOfChildren === 0 ? "" : data.noOfChildren}
                     />
                   </div>
                 </>
@@ -1345,10 +1349,11 @@ export default function InformationForm() {
                   type="submit"
                   className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all bg-indigo-500 border border-transparent rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                 >
-                  Submit
+                  {submitting ? "Submitting..." : "Submit"}
                 </button>
                 <button
                   type="reset"
+                  disabled={submitting}
                   className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all bg-red-500 border border-transparent rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                   onClick={() => {
                     setData({

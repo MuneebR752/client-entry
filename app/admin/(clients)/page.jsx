@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import columns from "./constants";
+import { Modal, Button } from "flowbite-react";
 const page = () => {
+  const [modalContent, setModalContent] = useState({});
+  const columns = ["Name", "Date of Birth", "Email", "Phone", "", ""];
+  const [openModal, setOpenModal] = useState(false);
   const [selectedClients, setSelectedClients] = useState([]);
   const [clients, setClients] = React.useState([]);
   const [search, setSearch] = React.useState("");
@@ -35,31 +38,51 @@ const page = () => {
       ]);
     }
   };
-  const handleDelete = async () => {
-    if (selectedClients.length > 0) {
+  const handleDelete = async (clientId) => {
+    if (clientId) {
       if (confirm("Are you sure you want to delete?")) {
-        selectedClients.map(async (id) => {
-          try {
-            const res = await fetch(`${location.origin}/api/clients/`, {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ id }),
-            });
-            if (res.ok) {
-              const deletedClient = selectedClients.filter(
-                (clientId) => clientId !== id
-              );
-              setSelectedClients(deletedClient);
-            }
-          } catch (e) {
-            alert("Error: " + e.message);
+        try {
+          const res = await fetch(`${location.origin}/api/clients/`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id: clientId }),
+          });
+          if (res.ok) {
+            alert("Client deleted successfully");
           }
-        });
+        } catch (e) {
+          alert("Error: " + e.message);
+        }
       }
+      return;
     } else {
-      alert("Please select a client");
+      if (selectedClients.length > 0) {
+        if (confirm("Are you sure you want to delete?")) {
+          selectedClients.map(async (id) => {
+            try {
+              const res = await fetch(`${location.origin}/api/clients/`, {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id }),
+              });
+              if (res.ok) {
+                const deletedClient = selectedClients.filter(
+                  (clientId) => clientId !== id
+                );
+                setSelectedClients(deletedClient);
+              }
+            } catch (e) {
+              alert("Error: " + e.message);
+            }
+          });
+        }
+      } else {
+        alert("Please select a client");
+      }
     }
   };
   return (
@@ -70,7 +93,7 @@ const page = () => {
             <div className="p-1.5 min-w-full inline-block align-middle">
               <div className="border border-gray-700 divide-y divide-gray-700 rounded-lg">
                 <div className="flex gap-8 px-4 py-3">
-                  <div className="relative max-w-xs">
+                  <div className="relative max-w-sm">
                     <label htmlFor="hs-table-search" className="sr-only">
                       Search
                     </label>
@@ -104,12 +127,12 @@ const page = () => {
                       handleDelete();
                     }}
                   >
-                    Delete
+                    Delete Selected
                   </button>
                 </div>
                 <div className="overflow-hidden">
-                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                    <thead className="bg-gray-50 dark:bg-gray-700">
+                  <table className="min-w-full divide-y divide-gray-700">
+                    <thead className="bg-gray-700">
                       <tr>
                         <th
                           scope="col"
@@ -125,6 +148,7 @@ const page = () => {
                               className="text-blue-600 bg-gray-800 border-gray-700 rounded checked:bg-blue-500 checked:border-blue-500 focus:ring-offset-gray-800"
                               checked={
                                 selectedClients.length != 0 &&
+                                clients.length != 0 &&
                                 selectedClients.length === clients.length
                               }
                               onChange={() => {
@@ -156,7 +180,7 @@ const page = () => {
                         ))}
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody className="divide-y divide-gray-700">
                       {clients
                         .filter((client) =>
                           Object.values(client).some(
@@ -195,9 +219,7 @@ const page = () => {
                             <td className="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap">
                               {client.name}
                             </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.dob}
-                            </td>
+
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                               {client.email}
                             </td>
@@ -205,172 +227,30 @@ const page = () => {
                               {client.phone}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.address}
+                              {client.dob}
                             </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.city}
+                            <td className="px-6 py-4">
+                              <button
+                                onClick={() => {
+                                  setModalContent({
+                                    ...client,
+                                  });
+                                  setOpenModal(true);
+                                }}
+                                className="px-5 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                              >
+                                View
+                              </button>
                             </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.streetNo}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.suiteNo}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.postalCode}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.statusInCanada}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.arrivalDate}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.yearsInCanada}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.birthCountry}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.height}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.weight}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.maritalStatus}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.spouseName}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.spouseDob}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.noOfChildren}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.noOfMaleChildren}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.noOfFemaleChildren}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.noOfInfantChildren}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.workStatus}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.occupation}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.jobResponsibilities}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.employerName}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.employerAddress}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.employerCity}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.employerStreetNo}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.employerSuiteNo}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.employerPostalCode}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.annualIncome}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.smokingStatus}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.drinkingStatus}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.drinkType}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.anyMedication}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.whichMedication}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.familyDoctor}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.clinicAddress}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.clinicCity}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.clinicStreetNo}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.clinicSuiteNo}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.clinicPostalCode}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.doctorLastVisit}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.reasonForLastVisit}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.anyFamilyHistory}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.anyHealthIssues}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.dangerousSports}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.replacingOldPolicy}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.anyLicenceSuspension}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.faceAmount}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.beneficiary1}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.beneficiary2}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.assets}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.liabilities}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.bankNumber}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.transitNumber}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.accountNumber}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.signature}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
-                              {client.createdAt}
+                            <td className="px-6 py-4">
+                              <button
+                                onClick={() => {
+                                  handleDelete(client.id);
+                                }}
+                                className="px-5 py-2 text-white bg-red-600 rounded-md hover:bg-red-700"
+                              >
+                                Delete
+                              </button>
                             </td>
                           </tr>
                         ))}
@@ -382,6 +262,55 @@ const page = () => {
           </div>
         </div>
       </section>
+
+      <Modal
+        className="dark"
+        show={openModal}
+        onClose={() => setOpenModal(false)}
+      >
+        <Modal.Header>Client Details</Modal.Header>
+        <Modal.Body className="no-scrollbar">
+          <div className="grid justify-between grid-cols-3 gap-x-14 gap-y-10">
+            {Object.keys(modalContent).map((key) => {
+              if (key === "userId" || key === "id") return;
+              if (key === "children") {
+                return modalContent.children?.map((child, i) => {
+                  return (
+                    <>
+                      <div className="col-span-3 text-lg text-gray-100">
+                        Child {i + 1}
+                      </div>
+                      {Object.keys(child).map((childKey) => {
+                        if (childKey === "clientId" || childKey === "id")
+                          return;
+                        return (
+                          <div className="flex flex-col">
+                            <h3 className="text-sm text-gray-400 uppercase">
+                              {childKey}
+                            </h3>
+                            <p className="text-gray-100">{child[childKey]}</p>
+                          </div>
+                        );
+                      })}
+                    </>
+                  );
+                });
+              }
+              return (
+                <div className="flex flex-col">
+                  <h3 className="text-sm text-gray-400 uppercase">{key}</h3>
+                  <p className="text-gray-100">{modalContent[key]}</p>
+                </div>
+              );
+            })}
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="red" onClick={() => setOpenModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </main>
   );
 };

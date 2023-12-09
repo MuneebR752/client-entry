@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
+const { v4: uuidv4 } = require("uuid");
 const prisma = new PrismaClient();
 
 export async function POST(request) {
@@ -85,17 +86,25 @@ export async function PUT(request) {
     const client = await request.json();
 
     const { children, userId, ...clientData } = client;
+    children.map((child) => {
+      console.log(child);
+    });
     const updatedClient = await prisma.client.update({
       where: { id: client.id },
       data: {
         ...clientData,
         children: {
-          createMany: {
-            data: children.map((child) => ({
+          upsert: children.map((child) => ({
+            where: { id: child.id || uuidv4() },
+            update: {
               name: child.name,
               dob: child.dob,
-            })),
-          },
+            },
+            create: {
+              name: child.name,
+              dob: child.dob,
+            },
+          })),
         },
         user: {
           connect: {

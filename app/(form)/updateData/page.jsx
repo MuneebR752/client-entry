@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { User } from "app/context/UserContext";
 export default function InformationForm() {
   let router = useRouter();
+  let [submitting, setSubmitting] = React.useState(false);
   const [user, setUser] = React.useContext(User);
   const [data, setData] = React.useState({
     id: user.formData.id,
@@ -70,6 +71,8 @@ export default function InformationForm() {
     accountNumber: user.formData.accountNumber,
     signature: user.formData.signature,
   });
+
+  let clientChildren = [...user.formData.children];
   let handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -78,6 +81,7 @@ export default function InformationForm() {
     e.preventDefault();
     let confirmation = confirm("Are you sure you want to submit?");
     if (confirmation) {
+      setSubmitting(true);
       try {
         let res = await fetch(`${location.origin}/api/clients`, {
           method: "PUT",
@@ -107,9 +111,11 @@ export default function InformationForm() {
             router.push("/");
           }
         }
+        setSubmitting(false);
         return res.json();
       } catch (err) {
         alert("Something went wrong!");
+        setSubmitting(false);
         console.log(err);
       }
     }
@@ -481,8 +487,14 @@ export default function InformationForm() {
                       name="noOfChildren"
                       className="block w-full px-4 py-3 text-gray-400 border-gray-700 rounded-md focus:outline-none bg-slate-900"
                       onChange={(e) => {
+                        let noOfChild = clientChildren.length;
                         let temp = [];
                         for (let i = 0; i < parseInt(e.target.value); i++) {
+                          if (i < noOfChild) {
+                            temp.push(clientChildren[i]);
+                            continue;
+                          }
+
                           temp.push({
                             name: "",
                             dob: "",
@@ -495,7 +507,7 @@ export default function InformationForm() {
                         });
                       }}
                       placeholder="3"
-                      value={(data.noOfChildren = 0 ? "" : data.noOfChildren)}
+                      value={data.noOfChildren === 0 ? "" : data.noOfChildren}
                     />
                   </div>
                 </>
@@ -1284,10 +1296,11 @@ export default function InformationForm() {
               <div></div>
               <div className="flex items-end justify-center gap-8">
                 <button
+                  disabled={submitting}
                   type="submit"
                   className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all bg-indigo-500 border border-transparent rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                 >
-                  Update
+                  {!submitting ? "Submit" : "Submitting..."}
                 </button>
                 <button
                   type="reset"
