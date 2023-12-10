@@ -174,7 +174,6 @@ const sendResendEmail = async (userId, name, email, updated) => {
             updated ? "An updated" : "A new"
           } response has been received from the SwiftServices form</p> <br>
           <p><strong>Name: </strong> ${name} <br> <strong>Email: </strong> ${email} <br> <strong>User ID: </strong> ${userId}</p>
-          <!-- Add more details about the response -->
           <p>You can log in to the admin panel or visit the form dashboard to view the complete response details.</p>
           <p>Thank you!</p>
           <p>Best Regards,<br>SwiftServices Team</p>

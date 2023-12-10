@@ -270,7 +270,7 @@ const page = () => {
       >
         <Modal.Header>Client Details</Modal.Header>
         <Modal.Body className="no-scrollbar">
-          <div className="grid justify-between grid-cols-3 gap-x-14 gap-y-10">
+          <div className="grid justify-between grid-cols-2 sm:grid-cols-3 gap-x-14 gap-y-10">
             {Object.keys(modalContent).map((key) => {
               if (key === "userId" || key === "id") return;
               if (key === "children") {

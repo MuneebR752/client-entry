@@ -123,7 +123,7 @@ export default function InformationForm() {
   if (user.formData) {
     return (
       <div className="flex justify-center w-full text-center bg-[#1f2937] absolute top-1/2">
-        <div className="max-w-5xl mx-auto text-xl text-white md:text-3xl lg:text-4xl">
+        <div className="max-w-5xl px-4 mx-auto text-xl text-white md:text-3xl lg:text-4xl">
           You response has already been recieved. If You wanna update it{" "}
           <Link className="text-blue-500" href={"/updateData"}>
             {" "}

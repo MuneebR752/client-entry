@@ -51,7 +51,7 @@ const Navbar = () => {
             }
             href={"/instructions"}
           >
-            Instructions/Guidlines
+            Instructions
           </Link>
         </div>
       </nav>
