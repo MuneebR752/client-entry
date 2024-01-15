@@ -9,7 +9,7 @@ export async function POST(request) {
     const client = await request.json();
 
     const { children, userId, ...clientData } = client;
-    const newClient = await prisma.client.create({
+    const newClient = await prisma.clients.create({
       data: {
         ...clientData,
         children: {
@@ -46,7 +46,7 @@ export async function POST(request) {
 
 export async function GET() {
   try {
-    const allClients = await prisma.client.findMany({
+    const allClients = await prisma.clients.findMany({
       include: {
         children: true,
       },
@@ -64,7 +64,7 @@ export async function DELETE(request) {
       where: { clientId: id },
     });
     if (deletedChildren) {
-      const deletedClient = await prisma.client.delete({
+      const deletedClient = await prisma.clients.delete({
         where: { id: id },
       });
       return Response.json({ deletedClient, message: "Client deleted" });
@@ -92,7 +92,7 @@ export async function PUT(request) {
     children.map((child) => {
       console.log(child);
     });
-    const updatedClient = await prisma.client.update({
+    const updatedClient = await prisma.clients.update({
       where: { id: client.id },
       data: {
         ...clientData,

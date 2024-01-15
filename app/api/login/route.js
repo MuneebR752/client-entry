@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 export async function POST(request) {
   const requestedUser = await request.json();
   try {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: {
         email: requestedUser.email,
       },
