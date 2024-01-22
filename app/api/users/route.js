@@ -32,12 +32,18 @@ export async function POST(request) {
 export async function DELETE(request) {
   try {
     const { id } = await request.json();
-
     const client = await prisma.clients.findUnique({
       where: {
         userId: id,
       },
     });
+
+    if (!client) {
+      const deletedUser = await prisma.users.delete({
+        where: { id: id },
+      });
+      return Response.json({ deletedUser, message: "User deleted" });
+    }
 
     const deletedChildren = await prisma.children.deleteMany({
       where: { clientId: client.id },
